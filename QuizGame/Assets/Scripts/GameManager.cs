@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         timeLeft = 60f;
         score = 0;
         answering = true;
+        gameState = 2;
     }
 
     void NewRound()
@@ -56,12 +57,13 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 2;
     }
+
     // Checks what state the game is currently in
     void CheckGameState()
     {
         if (gameState == 0)
         {
-            // Game is not on
+            // Game is not on and the game is in the main menu
         }
         if (gameState == 1)
         {
