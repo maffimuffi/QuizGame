@@ -102,6 +102,9 @@ public class GameManager : MonoBehaviour
                 {
                     gameState = 4;
                 }
+
+                // Score is added based on the level in question
+                score += level;
             }
             else if (playerAnswer == false)
             {
