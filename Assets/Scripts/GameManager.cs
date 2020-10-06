@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int correctAnswers;
     public int wrongAnswers;
     public int questionsLeft;
+    public int questionNumber;
     public int score;
     public int highscore;
     public int gameState;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         correctAnswers = 0;
         wrongAnswers = 0;
         questionsLeft = 10;
+        questionNumber = 1;
         timeLeft = 60f;
         score = 0;
         answering = true;
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         correctAnswers = 0;
         wrongAnswers = 0;
         questionsLeft = 10;
+        questionNumber = 1;
         timeLeft = 60f;
         answering = true;
     }
@@ -122,6 +125,7 @@ public class GameManager : MonoBehaviour
             {
                 correctAnswers++;
                 questionsLeft--;
+                questionNumber++;
                 if (questionsLeft == 0)
                 {
                     gameState = 4;
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
             {
                 wrongAnswers++;
                 questionsLeft--;
+                questionNumber++;
                 if (questionsLeft == 0)
                 {
                     gameState = 4;
@@ -182,6 +187,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameState = 0;
+        questionNumber = 1;
+        level = 1;
     }
 }
 
