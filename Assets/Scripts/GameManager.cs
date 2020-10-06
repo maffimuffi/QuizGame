@@ -15,13 +15,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public int level = 1;
-    public int correctAnswers = 0;
-    public int wrongAnswers = 0;
-    public int questionsLeft = 10;
-    public int score = 0;
+    public int level;
+    public int correctAnswers;
+    public int wrongAnswers;
+    public int questionsLeft;
+    public int score;
     public int highscore;
-    public int gameState = 0;
+    public int gameState;
 
     public float timeLeft = 60f;
 
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public bool playerAnswer = false;
 
     // Function is called at the start of a game
-    void StartGame()
+    public void StartNewGame()
     {
         level = 1;
         correctAnswers = 0;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         gameState = 2;
     }
 
-    void NewRound()
+    public void NewRound()
     {
         correctAnswers = 0;
         wrongAnswers = 0;
@@ -51,13 +51,37 @@ public class GameManager : MonoBehaviour
         answering = true;
     }
 
-    void NextQuestion()
+    public void NextQuestion()
     {
+        Debug.Log("NextQuestion");
         timeLeft = 60f;
         answering = true;
         gameState = 2;
     }
 
+    // Methods for saving and loading the game
+    public void SavePlayer()
+    {
+        SaveSystem.SaveGame(this);
+    }
+    
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadGame();
+
+        level = data.level;
+        correctAnswers = data.correctAnswers;
+        wrongAnswers = data.wrongAnswers;
+        questionsLeft = data.questionsLeft;
+        score = data.score;
+        highscore = data.highscore;
+        gameState = data.gameState;
+        timeLeft = data.timeLeft;
+        roundEnded = data.roundEnded;
+        answering = data.answering;
+        playerAnswer = data.playerAnswer;
+    }
+    
     // Checks what state the game is currently in
     void CheckGameState()
     {
@@ -67,8 +91,8 @@ public class GameManager : MonoBehaviour
         }
         if (gameState == 1)
         {
-            // Game starts and "opens the game screen"
-            StartGame();
+            // Game starts a new game and "opens the game screen"
+            StartNewGame();
         }
         if (gameState == 2)
         {
@@ -98,19 +122,16 @@ public class GameManager : MonoBehaviour
             {
                 correctAnswers++;
                 questionsLeft--;
-                if (questionsLeft < 1)
+                if (questionsLeft == 0)
                 {
                     gameState = 4;
                 }
-
-                // Score is added based on the level in question
-                score += level;
             }
             else if (playerAnswer == false)
             {
                 wrongAnswers++;
                 questionsLeft--;
-                if (questionsLeft < 1)
+                if (questionsLeft == 0)
                 {
                     gameState = 4;
                 }
@@ -156,6 +177,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckGameState();
+    }
+
+    private void Awake()
+    {
+        gameState = 0;
     }
 }
 

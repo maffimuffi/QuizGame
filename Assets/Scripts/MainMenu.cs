@@ -9,31 +9,40 @@ public class MainMenu : MonoBehaviour
     public GameManager gameManager;
 
     // GameObjects
-    public GameObject menuScreen;
+    public GameObject mainmenuScreen;
     public GameObject gameScreen;
+    public GameObject settingsScreen;
 
-
-    public void StartGame()
+    void Awake()
     {
-        menuScreen.SetActive(false);
+        mainmenuScreen.SetActive(true);
+        gameScreen.SetActive(false);
+        settingsScreen.SetActive(false);
+    }
+
+
+    public void StartNewButton()
+    {
+        mainmenuScreen.SetActive(false);
         gameScreen.SetActive(true);
         gameManager.gameState = 1;
     }
 
-    public void ContinueGame()
+    public void ContinueButton()
     {
-        menuScreen.SetActive(false);
+        mainmenuScreen.SetActive(false);
         gameScreen.SetActive(true);
+        // Loading the save here!
     }
 
-    public void Settings()
+    public void SettingsButton()
     {
-
+        mainmenuScreen.SetActive(false);
+        settingsScreen.SetActive(true);
     }
 
-    public void CloseGame()
+    public void CloseGameButton()
     {
         Application.Quit();
     }
-
 }
