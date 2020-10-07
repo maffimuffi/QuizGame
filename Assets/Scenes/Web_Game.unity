@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 107661983}
   - component: {fileID: 107661982}
   m_Layer: 5
-  m_Name: BackGround
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 136988783}
   - component: {fileID: 136988785}
   - component: {fileID: 136988784}
+  - component: {fileID: 136988786}
   m_Layer: 5
   m_Name: QuestionBackground
   m_TagString: Untagged
@@ -279,6 +280,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136988782}
   m_CullTransparentMesh: 0
+--- !u!114 &136988786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136988782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b531ef5c99f77b4dbd79c9c652aa562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestionText: {fileID: 1209795690}
+  AnswerAText: {fileID: 0}
+  AnswerBText: {fileID: 0}
+  AnswerCText: {fileID: 0}
+  AnswerDText: {fileID: 0}
+  AnswerAButton: {fileID: 832599720}
+  AnswerBButton: {fileID: 1207895909}
+  AnswerCButton: {fileID: 1291202377}
+  AnswerDButton: {fileID: 972451948}
+  correctAnswer: 2
 --- !u!1 &231968769
 GameObject:
   m_ObjectHideFlags: 0
