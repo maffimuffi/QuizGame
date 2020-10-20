@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
         timeLeft = 60f;
         answering = true;
         gameState = 2;
+        continuedToNextRound = false;
     }
 
     public void NextQuestion()
@@ -243,7 +244,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             // Player stays in the current level
-            if (correctAnswers > 4 && correctAnswers < 8)
+            else if (correctAnswers > 4 && correctAnswers < 8)
             {
                 roundEndText.text = "Pysyt Samalla Tasolla!";
                 if (continuedToNextRound)
@@ -252,7 +253,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             // Player gets demoted to the lower level
-            if (correctAnswers <= 4)
+            else if (correctAnswers <= 4)
             {
                 if (level > 1)
                 {
