@@ -12,7 +12,7 @@ using UnityEngine;
  * Has a level or round ended
  * Has the game ended
  */
-public class GameManager : MonoBehaviour
+public class CopyTest : MonoBehaviour
 {
     // Integers
     [HideInInspector]
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public int highscore;
     public int gameState;
 
-    // Floats
+    // Floatssdf
     public float timeLeft = 60f;
 
     // Booleans
@@ -101,7 +101,6 @@ public class GameManager : MonoBehaviour
     public void NewRound()
     {
         roundEndScreen.SetActive(false);
-        correctAnswers = 0;
         questionNumber = 1;
         timeLeft = 60f;
         answering = true;
@@ -143,7 +142,6 @@ public class GameManager : MonoBehaviour
     public void CorrectAnswer()
     {
         answering = false;
-        correctAnswers++;
         score += 100;
         playerAnswer = true;
     }
@@ -157,7 +155,7 @@ public class GameManager : MonoBehaviour
     // Methods for saving and loading the game
     public void SavePlayer()
     {
-        SaveSystem.SaveGame(this);
+        //SaveSystem.SaveGame(this);
     }
 
     public void LoadPlayer()
@@ -211,6 +209,7 @@ public class GameManager : MonoBehaviour
             // Player answered a question
             if (playerAnswer == true)
             {
+                correctAnswers++;
                 infoScreen.SetActive(true);
                 questionInfoText.text = "Oikein!";
             }
@@ -223,54 +222,56 @@ public class GameManager : MonoBehaviour
         if (gameState == 4)
         {
             // Level has ended
-
+            continuedToNextRound = false;
             roundEndScreen.SetActive(true);
             // Player gets promoted to the next level!
             if (correctAnswers >= 8)
             {
-                roundEndText.text = "Pääset Uudelle Tasolle!";
-                if (continuedToNextRound)
+                if (!continuedToNextRound)
                 {
-                    level++;
-                    /*
-                    if(level > 10)
+                    roundEndText.text = "Pääset Uudelle Tasolle!";
+                    if (continuedToNextRound)
                     {
-                        level = 10;
-                        gameState = 5;
+                        level++;
+                        NewRound();
                     }
-                    */
-                    NewRound();
                 }
             }
             // Player stays in the current level
-            if (correctAnswers > 4 && correctAnswers < 8)
+            if (correctAnswers >= 5 && correctAnswers <= 7)
             {
-                roundEndText.text = "Pysyt Samalla Tasolla!";
-                if (continuedToNextRound)
+                if (!continuedToNextRound)
                 {
-                    NewRound();
+                    roundEndText.text = "Pysyt Samalla Tasolla!";
+                    if (continuedToNextRound)
+                    {
+                        NewRound();
+                    }
                 }
             }
             // Player gets demoted to the lower level
-            if (correctAnswers <= 4)
+            if (correctAnswers >= 0 && correctAnswers <= 4)
             {
-                if (level > 1)
+                if (!continuedToNextRound)
                 {
-                    roundEndText.text = "Tiput Alemmalle Tasolle!";
-                    if (continuedToNextRound)
+                    if (level > 1)
                     {
-                        level--;
-                        NewRound();
+                        roundEndText.text = "Tiput Alemmalle Tasolle!";
+                        if (continuedToNextRound)
+                        {
+                            level--;
+                            NewRound();
+                        }
+                    }
+                    else
+                    {
+                        roundEndText.text = "Yritä Uudelleen!";
+                        if (continuedToNextRound)
+                        {
+                            NewRound();
+                        }
                     }
                 }
-                else if(level == 1)
-                {
-                    roundEndText.text = "Yritä Uudelleen!";
-                    if (continuedToNextRound)
-                    {
-                        NewRound();
-                    }
-                }              
             }
         }
 
@@ -287,3 +288,5 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
+

@@ -20,6 +20,10 @@ public class MainMenu : MonoBehaviour
         settingsScreen.SetActive(false);
     }
 
+    public void Continue()
+    {
+        gameManager.ContinueGame();
+    }
 
     public void StartNewButton()
     {

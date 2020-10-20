@@ -8,25 +8,22 @@ public class Test : MonoBehaviour
 {
 
     public GameManager manager;
+    public MainMenu mainMenu;
 
     public GameObject answer1;
     public GameObject answer2;
     public GameObject infoScreen;
 
     public Text scoreText;
-    public Text questionNumberText;
-    public Text levelText;
     public TMPro.TMP_Text timerText;
-    public Text infoText;
+    public TMPro.TMP_Text infoText;
 
-    private bool answered;
     private bool answering;
 
     private float timer;
 
     private void Start()
     {
-        answered = false;
         answering = true;
         timer = 60f;
     }
@@ -34,9 +31,9 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Pisteet: " + manager.score;
-        questionNumberText.text = "Kysymys: " + manager.questionNumber + "/10";
-        levelText.text = "Taso: " + manager.level;
+        scoreText.text = "Pisteet: " + manager.score + "        " + "Taso: " + manager.level + "         " + "Kysymys: " + manager.questionNumber + "/10";
+        //questionNumberText.text = "Kysymys: " + manager.questionNumber + "/10";
+        //levelText.text = "Taso: " + manager.level;
         timerText.text = timer.ToString("0");
 
         if(answering)
@@ -46,7 +43,7 @@ public class Test : MonoBehaviour
             {
                 timer = 0f;
                 WrongAnswer();
-                infoText.text = "Ei nyt menny ihan putkeen vai?";
+                infoText.text = "Aika loppui!";
             }
         }
 
@@ -93,5 +90,12 @@ public class Test : MonoBehaviour
         answering = true;
         timer = 60f;
         infoScreen.SetActive(false);
+    }
+
+    public void ExitToMenu()
+    {
+        infoScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(false);
+        mainMenu.mainmenuScreen.SetActive(true);
     }
 }
