@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     // Integers
     [HideInInspector]
     public int level;
-    //[HideInInspector]
+    [HideInInspector]
     public int correctAnswers;
     [HideInInspector]
     public int questionNumber;
@@ -25,21 +25,20 @@ public class GameManager : MonoBehaviour
     public int score;
     [HideInInspector]
     public int highscore;
+    [HideInInspector]
     public int gameState;
 
     // Floats
+    [HideInInspector]
     public float timeLeft = 60f;
 
     // Booleans
+    [HideInInspector]
     public bool answering = false;
+    [HideInInspector]
     public bool playerAnswer = false;
+    [HideInInspector]
     public bool continuedToNextRound = false;
-
-    // Buttons
-    public GameObject correctButton;
-    public GameObject wrongButton1;
-    public GameObject wrongButton2;
-    public GameObject wrongButton3;
 
     // GameObjects
     public GameObject infoScreen;
@@ -53,21 +52,12 @@ public class GameManager : MonoBehaviour
 
     //Scripts
     public MainMenu mainMenu;
-
-    // Answer buttons positions
-    public Vector3 answerPosition1;
-    public Vector3 answerPosition2;
-    public Vector3 answerPosition3;
-    public Vector3 answerPosition4;
+    public QuestionManager qmanager;
 
     private void Awake()
     {
-        answerPosition1 = correctButton.transform.position;
-        answerPosition2 = wrongButton1.transform.position;
-        answerPosition3 = wrongButton2.transform.position;
-        answerPosition4 = wrongButton3.transform.position;
-
         gameState = 0;
+        qmanager = GameObject.Find("GameManager").GetComponent<QuestionManager>();
     }
 
     // Update is called once per frame
@@ -96,6 +86,7 @@ public class GameManager : MonoBehaviour
         continuedToNextRound = false;
         gameState = 2;
         SavePlayer();
+        qmanager.ChangeAnswerPositions();
     }
 
     public void NewRound()
@@ -107,6 +98,7 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 2;
         continuedToNextRound = false;
+        qmanager.ChangeAnswerPositions();
     }
 
     public void NextQuestion()
@@ -124,6 +116,7 @@ public class GameManager : MonoBehaviour
             timeLeft = 60f;
             infoScreen.SetActive(false);
             gameState = 2;
+            qmanager.ChangeAnswerPositions();
         }
     }
 

@@ -1548,8 +1548,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
+      - m_Target: {fileID: 573352460}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: WrongAnswer
         m_Mode: 1
         m_Arguments:
@@ -1952,6 +1952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573352461}
   - component: {fileID: 573352460}
+  - component: {fileID: 573352462}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1981,10 +1982,6 @@ MonoBehaviour:
   answering: 0
   playerAnswer: 0
   continuedToNextRound: 0
-  correctButton: {fileID: 1307305875}
-  wrongButton1: {fileID: 2129121086}
-  wrongButton2: {fileID: 396693983}
-  wrongButton3: {fileID: 905693265}
   infoScreen: {fileID: 1406281453}
   roundEndScreen: {fileID: 1627640355}
   gameInfoText: {fileID: 240810935}
@@ -1992,10 +1989,7 @@ MonoBehaviour:
   questionInfoText: {fileID: 505026851}
   roundEndText: {fileID: 602858442}
   mainMenu: {fileID: 1566021162}
-  answerPosition1: {x: 0, y: 0, z: 0}
-  answerPosition2: {x: 0, y: 0, z: 0}
-  answerPosition3: {x: 0, y: 0, z: 0}
-  answerPosition4: {x: 0, y: 0, z: 0}
+  qmanager: {fileID: 0}
 --- !u!4 &573352461
 Transform:
   m_ObjectHideFlags: 0
@@ -2010,6 +2004,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &573352462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573352459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf5185581da9e7408b52e21d284fb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctButton: {fileID: 1307305875}
+  wrongButton1: {fileID: 2129121086}
+  wrongButton2: {fileID: 396693983}
+  wrongButton3: {fileID: 905693265}
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!1 &595322579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,8 +3011,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
+      - m_Target: {fileID: 573352460}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: WrongAnswer
         m_Mode: 1
         m_Arguments:
@@ -4287,9 +4307,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
-        m_MethodName: RightAnswer
+      - m_Target: {fileID: 573352460}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CorrectAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6145,8 +6165,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Test, Assembly-CSharp
+      - m_Target: {fileID: 573352460}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: WrongAnswer
         m_Mode: 1
         m_Arguments:
