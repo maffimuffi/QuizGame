@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int level;
     [HideInInspector]
+    public int repeatRound = 0;
+    [HideInInspector]
     public int correctAnswers;
     [HideInInspector]
     public int questionNumber;
@@ -233,6 +235,7 @@ public class GameManager : MonoBehaviour
                         gameState = 5;
                     }
                     */
+                    repeatRound = 0;
                     NewRound();
                 }
             }
@@ -242,6 +245,8 @@ public class GameManager : MonoBehaviour
                 roundEndText.text = "Pysyt Samalla Tasolla!";
                 if (continuedToNextRound)
                 {
+                    repeatRound++;
+                    score -= 1 * repeatRound * level;
                     NewRound();
                 }
             }
@@ -254,6 +259,7 @@ public class GameManager : MonoBehaviour
                     if (continuedToNextRound)
                     {
                         level--;
+                        repeatRound = 0;
                         NewRound();
                     }
                 }
