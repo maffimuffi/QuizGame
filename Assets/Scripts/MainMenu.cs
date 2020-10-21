@@ -20,11 +20,6 @@ public class MainMenu : MonoBehaviour
         settingsScreen.SetActive(false);
     }
 
-    public void Continue()
-    {
-        gameManager.ContinueGame();
-    }
-
     public void StartNewButton()
     {
         mainmenuScreen.SetActive(false);
@@ -36,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         mainmenuScreen.SetActive(false);
         gameScreen.SetActive(true);
-        // Loading the save here!
+        gameManager.LoadPlayer();
     }
 
     public void SettingsButton()

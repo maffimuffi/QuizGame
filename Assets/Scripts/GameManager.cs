@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int correctAnswers;
     [HideInInspector]
+    public int combinedCorrectAnswers;
+    [HideInInspector]
+    public int wrongAnswers;
+    [HideInInspector]
     public int questionNumber;
     [HideInInspector]
     public int score;
@@ -45,16 +49,19 @@ public class GameManager : MonoBehaviour
     public bool playerAnswer = false;
     [HideInInspector]
     public bool continuedToNextRound = false;
+    public bool gameEnded = false;
 
     // GameObjects
     public GameObject infoScreen;
     public GameObject roundEndScreen;
+    public GameObject gameEndScreen;
 
     // Texts
     public TMPro.TMP_Text gameInfoText;
     public TMPro.TMP_Text timerText;
     public TMPro.TMP_Text questionInfoText;
     public TMPro.TMP_Text roundEndText;
+    public TMPro.TMP_Text gameEndText;
 
     //Scripts
     public MainMenu mainMenu;
@@ -76,15 +83,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ContinueGame()
-    {
-        LoadPlayer();
-    }
-
     public void StartNewGame()
     {
         level = 1;
         correctAnswers = 0;
+        combinedCorrectAnswers = 0;
+        wrongAnswers = 0;
         questionNumber = 1;
         timeLeft = 60f;
         score = 0;
@@ -135,6 +139,16 @@ public class GameManager : MonoBehaviour
         roundEndScreen.SetActive(false);
         mainMenu.gameScreen.SetActive(false);
         mainMenu.mainmenuScreen.SetActive(true);
+        SavePlayer();
+        gameState = 0;
+    }
+
+    public void EndGame()
+    {
+        gameEndScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(false);
+        mainMenu.mainmenuScreen.SetActive(true);
+        gameState = 0;
     }
 
     public void ContinueToNextRound()
@@ -147,6 +161,7 @@ public class GameManager : MonoBehaviour
     {
         answering = false;
         correctAnswers++;
+        combinedCorrectAnswers++;
         if(level == highestRound)
         {
             score += 1 * level;
@@ -159,6 +174,7 @@ public class GameManager : MonoBehaviour
     {
         answering = false;
         playerAnswer = false;
+        wrongAnswers++;
     }
 
     // Methods for saving and loading the game
@@ -197,6 +213,10 @@ public class GameManager : MonoBehaviour
             // Player is answering a question
             if (answering)
             {
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    CorrectAnswer();
+                }
                 timeLeft -= Time.deltaTime;
                 timerText.text = timeLeft.ToString("0");
             }
@@ -235,25 +255,28 @@ public class GameManager : MonoBehaviour
             // Player gets promoted to the next level!
             if (correctAnswers >= 8)
             {
-                roundEndText.text = "Pääset Uudelle Tasolle!";
-                if (continuedToNextRound)
+                if(level < 10)
+                {
+                    roundEndText.text = "Pääset Uudelle Tasolle!";
+                    if (continuedToNextRound)
+                    {
+                        score -= 1 * repeatRound * level;
+                        level++;
+
+                        if (level > highestRound)
+                        {
+                            highestRound = level;
+                        }
+                        
+                        repeatRound = 0;
+                        NewRound();
+                    }
+                }
+                else
                 {
                     score -= 1 * repeatRound * level;
-                    level++;
-
-                    if(level > highestRound)
-                    {
-                        highestRound = level;
-                    }
-                    
-                    if(level > 10)
-                    {
-                        level = 10;
-                        gameState = 5;
-                    }
-                    
-                    repeatRound = 0;
-                    NewRound();
+                    level = 10;
+                    gameState = 5;
                 }
             }
             // Player stays in the current level
@@ -295,13 +318,16 @@ public class GameManager : MonoBehaviour
         if (gameState == 5)
         {
             // Game has ended, open game ending screen
-            // Open that shiit
+            roundEndScreen.SetActive(false);
+            gameEndScreen.SetActive(true);
+
+            gameEndText.text = "Peli On Päättynyt!\n\n" + "Oikeat Vastaukset: " + combinedCorrectAnswers + "\n\n" + "Väärät Vastaukset: " + wrongAnswers + "\n\n" + "Pisteet: " + score;
+
             if (score > highscore)
             {
                 highscore = score;
                 // Update highscore in db
             }
-            // Finally after exiting the ending screen somehow change gameState to 0
         }
     }
 }
