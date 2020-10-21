@@ -34,14 +34,6 @@ public class QuestionManager : MonoBehaviour
         buttons[3] = wrongButton3;
     }
 
-    private void Update()
-    {
-        //Debug.Log("Position 1: " + answerPosition1);
-        //Debug.Log("Position 2: " + answerPosition2);
-        //Debug.Log("Position 3: " + answerPosition3);
-        //Debug.Log("Position 4: " + answerPosition4);
-    }
-
     public void ChangeAnswerPositions()
     {
         positions[0] = answerPosition1;

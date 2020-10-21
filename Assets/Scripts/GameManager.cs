@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public int highscore;
     [HideInInspector]
     public int gameState;
+    [HideInInspector]
+    public int roundScore;
+    [HideInInspector]
+    public int highestRound;
 
     // Floats
     [HideInInspector]
@@ -84,6 +88,8 @@ public class GameManager : MonoBehaviour
         questionNumber = 1;
         timeLeft = 60f;
         score = 0;
+        roundScore = 0;
+        highestRound = 1;
         answering = true;
         continuedToNextRound = false;
         gameState = 2;
@@ -96,6 +102,7 @@ public class GameManager : MonoBehaviour
         roundEndScreen.SetActive(false);
         correctAnswers = 0;
         questionNumber = 1;
+        roundScore = 0;
         timeLeft = 60f;
         answering = true;
         gameState = 2;
@@ -140,7 +147,11 @@ public class GameManager : MonoBehaviour
     {
         answering = false;
         correctAnswers++;
-        score += 1 * level;
+        if(level == highestRound)
+        {
+            score += 1 * level;
+        }
+        roundScore += 1 * level;
         playerAnswer = true;
     }
 
@@ -227,14 +238,20 @@ public class GameManager : MonoBehaviour
                 roundEndText.text = "Pääset Uudelle Tasolle!";
                 if (continuedToNextRound)
                 {
+                    score -= 1 * repeatRound * level;
                     level++;
-                    /*
+
+                    if(level > highestRound)
+                    {
+                        highestRound = level;
+                    }
+                    
                     if(level > 10)
                     {
                         level = 10;
                         gameState = 5;
                     }
-                    */
+                    
                     repeatRound = 0;
                     NewRound();
                 }
@@ -246,7 +263,7 @@ public class GameManager : MonoBehaviour
                 if (continuedToNextRound)
                 {
                     repeatRound++;
-                    score -= 1 * repeatRound * level;
+                    score -= roundScore;
                     NewRound();
                 }
             }
@@ -258,6 +275,7 @@ public class GameManager : MonoBehaviour
                     roundEndText.text = "Tiput Alemmalle Tasolle!";
                     if (continuedToNextRound)
                     {
+                        score -= roundScore;
                         level--;
                         repeatRound = 0;
                         NewRound();
