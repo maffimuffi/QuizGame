@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         answering = false;
         correctAnswers++;
-        score += 100;
+        score += 1 * level;
         playerAnswer = true;
     }
 

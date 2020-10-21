@@ -23,10 +23,10 @@ public class QuestionManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        answerPosition1 = correctButton.transform.position;
-        answerPosition2 = wrongButton1.transform.position;
-        answerPosition3 = wrongButton2.transform.position;
-        answerPosition4 = wrongButton3.transform.position;
+        answerPosition1 = correctButton.transform.localPosition;
+        answerPosition2 = wrongButton1.transform.localPosition;
+        answerPosition3 = wrongButton2.transform.localPosition;
+        answerPosition4 = wrongButton3.transform.localPosition;
 
         buttons[0] = correctButton;
         buttons[1] = wrongButton1;
