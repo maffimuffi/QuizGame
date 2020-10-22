@@ -12,19 +12,21 @@ public class SettingsMenu : MonoBehaviour
     public Button musicButton;
     public Button soundButton;
 
-    [SerializeField] private bool musicOn;
-    [SerializeField] private bool soundOn;
+    public bool musicOn;
+    public bool soundOn;
 
     public void MusicButton()
     {
         if(musicOn)
         {
             musicOn = false;
+            AudioManager.Instance.StopSound("GameMusic");
             musicButton.image.color = Color.red;
         }
         else if(!musicOn)
         {
             musicOn = true;
+            AudioManager.Instance.PlaySound("GameMusic");
             musicButton.image.color = Color.green;
         }
     }
@@ -49,11 +51,8 @@ public class SettingsMenu : MonoBehaviour
         mainmenuScreen.SetActive(true);
     }
 
-    void Start()
+    void Awake()
     {
-        musicOn = true;
-        soundOn = true;
-
         if(musicOn)
         {
             musicButton.image.color = Color.green;

@@ -55,6 +55,8 @@ public class AudioManager : MonoBehaviour {
 
     [SerializeField]    String          startupTrack    = String.Empty;
 
+    public SettingsMenu settingsMenu;
+
     #endregion
 
     #region Default Unity methods
@@ -80,7 +82,10 @@ public class AudioManager : MonoBehaviour {
     {
         if (string.IsNullOrEmpty(startupTrack) != true)
         {
-            PlaySound(startupTrack);
+            if(settingsMenu.musicOn)
+            {
+                PlaySound(startupTrack);
+            }
         }
     }
 

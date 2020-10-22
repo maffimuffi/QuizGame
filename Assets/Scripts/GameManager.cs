@@ -42,11 +42,14 @@ public class GameManager : MonoBehaviour
     //Scripts
     public MainMenu mainMenu;
     public QuestionManager qmanager;
+    public SettingsMenu settingsMenu;
 
     private void Awake()
     {
         gameState = 0;
         qmanager = GameObject.Find("GameManager").GetComponent<QuestionManager>();
+        settingsMenu.musicOn = true;
+        settingsMenu.soundOn = true;
     }
 
     // Update is called once per frame
@@ -144,8 +147,15 @@ public class GameManager : MonoBehaviour
         }
         roundScore += 1 * level;
         playerAnswer = true;
-        AudioManager.Instance.PlaySound("CorrectSFX");
-
+        if(settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet on päällä, ja oikein meni!");
+            AudioManager.Instance.PlaySound("CorrectSFX");
+        }
+        else if(!settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet ei ole päällä, mutta silti oikein meni!");
+        }
     }
 
     public void WrongAnswer()
@@ -153,8 +163,15 @@ public class GameManager : MonoBehaviour
         answering = false;
         playerAnswer = false;
         wrongAnswers++;
-        AudioManager.Instance.PlaySound("IncorrectSFX");
-
+        if (settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet on päällä, mutta väärin meni!");
+            AudioManager.Instance.PlaySound("IncorrectSFX");
+        }
+        else if (!settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet ei ole päällä, väärin meni kuitenki!");
+        }
     }
 
     // Methods for saving and loading the game
