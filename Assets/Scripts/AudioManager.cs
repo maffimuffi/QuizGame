@@ -44,11 +44,11 @@ public class Sound
         Source.Stop();
     }
 }
-public class AudioManagerTut : MonoBehaviour {
+public class AudioManager : MonoBehaviour {
 
     #region Variables
 
-    public static       AudioManagerTut    Instance        = null;
+    public static       AudioManager    Instance        = null;
 
     [SerializeField]    Sound[]         sounds          = null;
     [SerializeField]    AudioSource     sourcePrefab    = null;

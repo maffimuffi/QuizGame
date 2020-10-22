@@ -3,52 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/*
- * GameManager keeps track on what state game is in.
- * Is the game on or in the main menu
- * Did the game just start
- * Is the player answering a question
- * Has the player answered and what is the result
- * Has a level or round ended
- * Has the game ended
- */
 public class GameManager : MonoBehaviour
 {
     // Integers
-    [HideInInspector]
-    public int level;
-    [HideInInspector]
-    public int repeatRound = 0;
-    [HideInInspector]
-    public int correctAnswers;
-    [HideInInspector]
-    public int combinedCorrectAnswers;
-    [HideInInspector]
-    public int wrongAnswers;
-    [HideInInspector]
-    public int questionNumber;
-    [HideInInspector]
-    public int score;
-    [HideInInspector]
-    public int highscore;
-    [HideInInspector]
-    public int gameState;
-    [HideInInspector]
-    public int roundScore;
-    [HideInInspector]
-    public int highestRound;
+    [HideInInspector] public int level;
+    [HideInInspector] public int repeatRound = 0;
+    [HideInInspector] public int correctAnswers;
+    [HideInInspector] public int combinedCorrectAnswers;
+    [HideInInspector] public int wrongAnswers;
+    [HideInInspector] public int questionNumber;
+    [HideInInspector] public int score;
+    [HideInInspector] public int highscore;
+    [HideInInspector] public int gameState;
+    [HideInInspector] public int roundScore;
+    [HideInInspector] public int highestRound;
 
     // Floats
-    [HideInInspector]
-    public float timeLeft = 60f;
+    [HideInInspector] public float timeLeft = 60f;
 
     // Booleans
-    [HideInInspector]
-    public bool answering = false;
-    [HideInInspector]
-    public bool playerAnswer = false;
-    [HideInInspector]
-    public bool continuedToNextRound = false;
+    [HideInInspector] public bool answering = false;
+    [HideInInspector] public bool playerAnswer = false;
+    [HideInInspector] public bool continuedToNextRound = false;
     public bool gameEnded = false;
 
     // GameObjects
@@ -168,7 +144,7 @@ public class GameManager : MonoBehaviour
         }
         roundScore += 1 * level;
         playerAnswer = true;
-        AudioManagerTut.Instance.PlaySound("CorrectSFX");
+        AudioManager.Instance.PlaySound("CorrectSFX");
 
     }
 
@@ -177,7 +153,7 @@ public class GameManager : MonoBehaviour
         answering = false;
         playerAnswer = false;
         wrongAnswers++;
-        AudioManagerTut.Instance.PlaySound("IncorrectSFX");
+        AudioManager.Instance.PlaySound("IncorrectSFX");
 
     }
 
