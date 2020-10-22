@@ -168,6 +168,8 @@ public class GameManager : MonoBehaviour
         }
         roundScore += 1 * level;
         playerAnswer = true;
+        AudioManagerTut.Instance.PlaySound("CorrectSFX");
+
     }
 
     public void WrongAnswer()
@@ -175,6 +177,8 @@ public class GameManager : MonoBehaviour
         answering = false;
         playerAnswer = false;
         wrongAnswers++;
+        AudioManagerTut.Instance.PlaySound("IncorrectSFX");
+
     }
 
     // Methods for saving and loading the game
@@ -240,6 +244,7 @@ public class GameManager : MonoBehaviour
             {
                 infoScreen.SetActive(true);
                 questionInfoText.text = "Oikein!";
+
             }
             else if (playerAnswer == false)
             {
