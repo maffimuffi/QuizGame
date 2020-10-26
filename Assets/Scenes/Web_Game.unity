@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b531ef5c99f77b4dbd79c9c652aa562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  answerSize: 4
   QuestionText: {fileID: 1209795690}
   AnswerAText: {fileID: 0}
   AnswerBText: {fileID: 0}
@@ -301,6 +302,7 @@ MonoBehaviour:
   AnswerBButton: {fileID: 1207895909}
   AnswerCButton: {fileID: 1291202377}
   AnswerDButton: {fileID: 972451948}
+  AnswerButtons: []
   correctAnswer: 2
 --- !u!1 &231968769
 GameObject:
