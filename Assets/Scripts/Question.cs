@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Question : MonoBehaviour
 {
     public int answerSize = 4;
+    public List<string> stringList = new List<string>();
     public TMP_Text QuestionText;
     public TMP_Text AnswerAText;
     public TMP_Text AnswerBText;
@@ -22,16 +23,68 @@ public class Question : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         AnswerAText = AnswerAButton.GetComponentInChildren<TMP_Text>();
         AnswerBText = AnswerBButton.GetComponentInChildren<TMP_Text>();
         AnswerCText = AnswerCButton.GetComponentInChildren<TMP_Text>();
         AnswerDText = AnswerDButton.GetComponentInChildren<TMP_Text>();
     }
+    public void Parse(string text)
+    {
+        string tempString = "";
+        
+        foreach(char c in text )
+        {
+            
+            if(c== '_')
+            {
+                stringList.Add(tempString);
+                tempString="";
+            }
+            else
+            {
+                tempString += c;
+            }
+        }
+        stringList.Add(tempString);
+        SetText();
+    }
+    public void SetText()
+    {
+        QuestionText.text = stringList[0];
+        AnswerAText.text = stringList[1];
+        AnswerBText.text = stringList[2];
+        AnswerCText.text = stringList[3];
+        AnswerDText.text = stringList[4];
+        ShuffleButtons();
+    }
+    public void ShuffleButtons()
+    {
+        
+        int randomNumber;
+        List<int> takenNumber = new List<int>();
+        takenNumber.Clear();
+        for(int i = 0; i<answerSize;i++)
+        {
 
+            
+            do
+            {
+                randomNumber = UnityEngine.Random.Range(0,answerSize);
+                 
+            }while(takenNumber.Contains(randomNumber));
+            takenNumber.Add(randomNumber);
+            AnswerButtons[i].transform.SetSiblingIndex(randomNumber);
+            
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ShuffleButtons();
+        }
     }
     // remove listeners from buttons
     public void ClearButtonListeners()

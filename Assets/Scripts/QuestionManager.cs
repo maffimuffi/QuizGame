@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
-
+    
     // Buttons
     public GameObject correctButton;
     public GameObject wrongButton1;
