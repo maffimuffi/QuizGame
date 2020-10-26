@@ -3,63 +3,175 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/*
- * GameManager keeps track on what state game is in.
- * Is the game on or in the main menu
- * Did the game just start
- * Is the player answering a question
- * Has the player answered and what is the result
- * Has a level or round ended
- * Has the game ended
- */
 public class GameManager : MonoBehaviour
 {
+    // Integers
+    [HideInInspector] public int level;
+    [HideInInspector] public int repeatRound = 0;
+    [HideInInspector] public int correctAnswers;
+    [HideInInspector] public int combinedCorrectAnswers;
+    [HideInInspector] public int wrongAnswers;
+    [HideInInspector] public int questionNumber;
+    [HideInInspector] public int score;
+    [HideInInspector] public int highscore;
+    [HideInInspector] public int gameState;
+    [HideInInspector] public int roundScore;
+    [HideInInspector] public int highestRound;
 
-    public int level;
-    public int correctAnswers;
-    public int wrongAnswers;
-    public int questionsLeft;
-    public int questionNumber;
-    public int score;
-    public int highscore;
-    public int gameState;
+    // Floats
+    [HideInInspector] public float timeLeft = 60f;
 
-    public float timeLeft = 60f;
+    // Booleans
+    [HideInInspector] public bool answering = false;
+    [HideInInspector] public bool playerAnswer = false;
+    [HideInInspector] public bool continuedToNextRound = false;
+    public bool gameEnded = false;
 
-    public bool roundEnded = false;
-    public bool answering = false;
-    public bool playerAnswer = false;
+    // GameObjects
+    public GameObject infoScreen;
+    public GameObject roundEndScreen;
+    public GameObject gameEndScreen;
 
-    // Function is called at the start of a game
+    // Texts
+    public TMPro.TMP_Text gameInfoText;
+    public TMPro.TMP_Text timerText;
+    public TMPro.TMP_Text questionInfoText;
+    public TMPro.TMP_Text roundEndText;
+    public TMPro.TMP_Text gameEndText;
+
+    //Scripts
+    public MainMenu mainMenu;
+    public QuestionManager qmanager;
+    public SettingsMenu settingsMenu;
+
+    private void Awake()
+    {
+        gameState = 0;
+        qmanager = GameObject.Find("GameManager").GetComponent<QuestionManager>();
+        settingsMenu.musicOn = true;
+        settingsMenu.soundOn = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CheckGameState();
+        if (gameState != 0)
+        {
+            gameInfoText.text = "Pisteet: " + score + "        " + "Taso: " + level + "         " + "Kysymys: " + questionNumber + "/10";
+        }
+    }
+
     public void StartNewGame()
     {
         level = 1;
         correctAnswers = 0;
+        combinedCorrectAnswers = 0;
         wrongAnswers = 0;
-        questionsLeft = 10;
         questionNumber = 1;
         timeLeft = 60f;
         score = 0;
+        roundScore = 0;
+        highestRound = 1;
         answering = true;
+        continuedToNextRound = false;
         gameState = 2;
+        SavePlayer();
+        qmanager.ChangeAnswerPositions();
     }
 
     public void NewRound()
     {
+        roundEndScreen.SetActive(false);
         correctAnswers = 0;
-        wrongAnswers = 0;
-        questionsLeft = 10;
         questionNumber = 1;
+        roundScore = 0;
         timeLeft = 60f;
         answering = true;
+        gameState = 2;
+        continuedToNextRound = false;
+        qmanager.ChangeAnswerPositions();
     }
 
     public void NextQuestion()
     {
-        Debug.Log("NextQuestion");
-        timeLeft = 60f;
-        answering = true;
-        gameState = 2;
+        questionNumber++;
+        if (questionNumber > 10)
+        {
+            questionNumber = 10;
+            infoScreen.SetActive(false);
+            gameState = 4;
+        }
+        else
+        {
+            answering = true;
+            timeLeft = 60f;
+            infoScreen.SetActive(false);
+            gameState = 2;
+            qmanager.ChangeAnswerPositions();
+        }
+    }
+
+    public void ExitToMenu()
+    {
+        infoScreen.SetActive(false);
+        roundEndScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(false);
+        mainMenu.mainmenuScreen.SetActive(true);
+        SavePlayer();
+        gameState = 0;
+    }
+
+    public void EndGame()
+    {
+        gameEndScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(false);
+        mainMenu.mainmenuScreen.SetActive(true);
+        gameState = 0;
+    }
+
+    public void ContinueToNextRound()
+    {
+        continuedToNextRound = true;
+        roundEndScreen.SetActive(false);
+    }
+
+    public void CorrectAnswer()
+    {
+        answering = false;
+        correctAnswers++;
+        combinedCorrectAnswers++;
+        if(level == highestRound)
+        {
+            score += 1 * level;
+        }
+        roundScore += 1 * level;
+        playerAnswer = true;
+        if(settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet on päällä, ja oikein meni!");
+            AudioManager.Instance.PlaySound("CorrectSFX");
+        }
+        else if(!settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet ei ole päällä, mutta silti oikein meni!");
+        }
+    }
+
+    public void WrongAnswer()
+    {
+        answering = false;
+        playerAnswer = false;
+        wrongAnswers++;
+        if (settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet on päällä, mutta väärin meni!");
+            AudioManager.Instance.PlaySound("IncorrectSFX");
+        }
+        else if (!settingsMenu.soundOn)
+        {
+            Debug.Log("Äänet ei ole päällä, väärin meni kuitenki!");
+        }
     }
 
     // Methods for saving and loading the game
@@ -67,24 +179,21 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.SaveGame(this);
     }
-    
+
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadGame();
 
         level = data.level;
         correctAnswers = data.correctAnswers;
-        wrongAnswers = data.wrongAnswers;
-        questionsLeft = data.questionsLeft;
         score = data.score;
         highscore = data.highscore;
         gameState = data.gameState;
         timeLeft = data.timeLeft;
-        roundEnded = data.roundEnded;
         answering = data.answering;
         playerAnswer = data.playerAnswer;
     }
-    
+
     // Checks what state the game is currently in
     void CheckGameState()
     {
@@ -94,7 +203,6 @@ public class GameManager : MonoBehaviour
         }
         if (gameState == 1)
         {
-            // Game starts a new game and "opens the game screen"
             StartNewGame();
         }
         if (gameState == 2)
@@ -102,7 +210,12 @@ public class GameManager : MonoBehaviour
             // Player is answering a question
             if (answering)
             {
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    CorrectAnswer();
+                }
                 timeLeft -= Time.deltaTime;
+                timerText.text = timeLeft.ToString("0");
             }
             // Must check if the player has answered
             if (!answering)
@@ -120,76 +233,99 @@ public class GameManager : MonoBehaviour
         if (gameState == 3)
         {
             // Player answered a question
-            answering = false; // Possibly not needed
             if (playerAnswer == true)
             {
-                correctAnswers++;
-                questionsLeft--;
-                questionNumber++;
-                if (questionsLeft == 0)
-                {
-                    gameState = 4;
-                }
+                infoScreen.SetActive(true);
+                questionInfoText.text = "Oikein!";
+
             }
             else if (playerAnswer == false)
             {
-                wrongAnswers++;
-                questionsLeft--;
-                questionNumber++;
-                if (questionsLeft == 0)
-                {
-                    gameState = 4;
-                }
+                infoScreen.SetActive(true);
+                questionInfoText.text = "Väärin!";
             }
         }
         if (gameState == 4)
         {
             // Level has ended
 
+            roundEndScreen.SetActive(true);
             // Player gets promoted to the next level!
             if (correctAnswers >= 8)
             {
-                level++;
-                NewRound();
+                if(level < 10)
+                {
+                    roundEndText.text = "Pääset Uudelle Tasolle!";
+                    if (continuedToNextRound)
+                    {
+                        score -= 1 * repeatRound * level;
+                        level++;
+
+                        if (level > highestRound)
+                        {
+                            highestRound = level;
+                        }
+                        
+                        repeatRound = 0;
+                        NewRound();
+                    }
+                }
+                else
+                {
+                    score -= 1 * repeatRound * level;
+                    level = 10;
+                    gameState = 5;
+                }
             }
             // Player stays in the current level
-            if (correctAnswers >= 5 && correctAnswers <= 7)
+            else if (correctAnswers > 4 && correctAnswers < 8)
             {
-                NewRound();
+                roundEndText.text = "Pysyt Samalla Tasolla!";
+                if (continuedToNextRound)
+                {
+                    repeatRound++;
+                    score -= roundScore;
+                    NewRound();
+                }
             }
             // Player gets demoted to the lower level
-            if (correctAnswers >= 0 && correctAnswers <= 4)
+            else if (correctAnswers <= 4)
             {
-                level--;
-                NewRound();
+                if (level > 1)
+                {
+                    roundEndText.text = "Tiput Alemmalle Tasolle!";
+                    if (continuedToNextRound)
+                    {
+                        score -= roundScore;
+                        level--;
+                        repeatRound = 0;
+                        NewRound();
+                    }
+                }
+                else if(level == 1)
+                {
+                    roundEndText.text = "Yritä Uudelleen!";
+                    if (continuedToNextRound)
+                    {
+                        NewRound();
+                    }
+                }              
             }
         }
 
         if (gameState == 5)
         {
             // Game has ended, open game ending screen
-            // Open that shiit
+            roundEndScreen.SetActive(false);
+            gameEndScreen.SetActive(true);
+
+            gameEndText.text = "Peli On Päättynyt!\n\n" + "Oikeat Vastaukset: " + combinedCorrectAnswers + "\n\n" + "Väärät Vastaukset: " + wrongAnswers + "\n\n" + "Pisteet: " + score;
+
             if (score > highscore)
             {
                 highscore = score;
                 // Update highscore in db
             }
-            // Finally after exiting the ending screen somehow change gameState to 0
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        CheckGameState();
-    }
-
-    private void Awake()
-    {
-        gameState = 0;
-        questionNumber = 1;
-        level = 1;
-    }
 }
-
-
