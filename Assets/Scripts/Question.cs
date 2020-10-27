@@ -18,7 +18,7 @@ public class Question : MonoBehaviour
     public Button AnswerCButton;
     public Button AnswerDButton;
     public List <Button> AnswerButtons = new List<Button>();
-    public int correctAnswer;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,19 @@ public class Question : MonoBehaviour
         AnswerBText = AnswerBButton.GetComponentInChildren<TMP_Text>();
         AnswerCText = AnswerCButton.GetComponentInChildren<TMP_Text>();
         AnswerDText = AnswerDButton.GetComponentInChildren<TMP_Text>();
+        for(int i = 1;i<answerSize;i++)
+        {
+            AnswerButtons[i].onClick.AddListener(() => WrongAnswer());
+        }
+        AnswerAButton.onClick.AddListener (()=> CorrectAnswer());
+    }
+    public void WrongAnswer()
+    {
+        Debug.Log("Väärin meni");
+    }
+    public void CorrectAnswer()
+    {
+        Debug.Log("Oikein");
     }
     public void Parse(string text)
     {
@@ -95,10 +108,9 @@ public class Question : MonoBehaviour
         AnswerDButton.onClick.RemoveAllListeners();
     }
     
-    public void NewQuestion(string questText,int rightAnswer)
+    public void NewQuestion()
     {
-        QuestionText.text = questText;
-        correctAnswer = rightAnswer;
+       
 
     }
     public void RandomizeOrder()
