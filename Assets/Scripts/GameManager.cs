@@ -44,11 +44,13 @@ public class GameManager : MonoBehaviour
     public MainMenu mainMenu;
     public QuestionManager qmanager;
     public SettingsMenu settingsMenu;
+    public DatabaseHandler dbHandler;
 
     private void Awake()
     {
         gameState = 0;
-        qmanager = GameObject.Find("GameManager").GetComponent<QuestionManager>();
+        qmanager = gameObject.GetComponent<QuestionManager>();
+        dbHandler = gameObject.GetComponent<DatabaseHandler>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
     }
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
         gameState = 2;
         SavePlayer();
         qmanager.ChangeAnswerPositions();
+        dbHandler.GetQuestion();
     }
 
     public void NewRound()
@@ -92,6 +95,7 @@ public class GameManager : MonoBehaviour
         gameState = 2;
         continuedToNextRound = false;
         qmanager.ChangeAnswerPositions();
+        dbHandler.GetQuestion();
     }
 
     public void NextQuestion()
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
             infoScreen.SetActive(false);
             gameState = 2;
             qmanager.ChangeAnswerPositions();
+            dbHandler.GetQuestion();
         }
     }
 
