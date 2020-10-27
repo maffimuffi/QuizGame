@@ -653,8 +653,8 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Analytics: 1
-    Build: 1
-    Collab: 1
+    Build: 0
+    Collab: 0
     Game Performance: 0
     Purchasing: 0
     UNet: 1
