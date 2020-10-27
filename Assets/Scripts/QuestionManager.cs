@@ -20,6 +20,14 @@ public class QuestionManager : MonoBehaviour
     private Vector3 answerPosition4;
     public List<Vector3> positions;
 
+    // Texts
+    public List<string> stringList = new List<string>();
+    [SerializeField] private TMPro.TMP_Text questionText;
+    [SerializeField] private TMPro.TMP_Text correctText;
+    [SerializeField] private TMPro.TMP_Text wrongText1;
+    [SerializeField] private TMPro.TMP_Text wrongText2;
+    [SerializeField] private TMPro.TMP_Text wrongText3;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,6 +40,11 @@ public class QuestionManager : MonoBehaviour
         buttons[1] = wrongButton1;
         buttons[2] = wrongButton2;
         buttons[3] = wrongButton3;
+
+        correctText = correctButton.GetComponentInChildren<TMPro.TMP_Text>();
+        wrongText1 = wrongButton1.GetComponentInChildren<TMPro.TMP_Text>();
+        wrongText2 = wrongButton2.GetComponentInChildren<TMPro.TMP_Text>();
+        wrongText3 = wrongButton3.GetComponentInChildren<TMPro.TMP_Text>();
     }
 
     public void ChangeAnswerPositions()
@@ -52,5 +65,34 @@ public class QuestionManager : MonoBehaviour
         positions.Add(answerPosition2);
         positions.Add(answerPosition3);
         positions.Add(answerPosition4);
+    }
+
+    public void ParseText(string text)
+    {
+        string tempString = "";
+
+        foreach(char c in text)
+        {
+            if(c == '_')
+            {
+                stringList.Add(tempString);
+                tempString = "";
+            }
+            else
+            {
+                tempString += c;
+            }
+        }
+        stringList.Add(tempString);
+        SetTexts();
+    }
+
+    public void SetTexts()
+    {
+        questionText.text = stringList[0];
+        correctText.text = stringList[1];
+        wrongText1.text = stringList[2];
+        wrongText2.text = stringList[3];
+        wrongText3.text = stringList[4];
     }
 }

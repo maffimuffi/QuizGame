@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -33,11 +34,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameEndScreen;
 
     // Texts
-    public TMPro.TMP_Text gameInfoText;
-    public TMPro.TMP_Text timerText;
-    public TMPro.TMP_Text questionInfoText;
-    public TMPro.TMP_Text roundEndText;
-    public TMPro.TMP_Text gameEndText;
+    public TMP_Text gameInfoText;
+    public TMP_Text timerText;
+    public TMP_Text questionInfoText;
+    public TMP_Text roundEndText;
+    public TMP_Text gameEndText;
 
     //Scripts
     public MainMenu mainMenu;
@@ -141,20 +142,18 @@ public class GameManager : MonoBehaviour
         answering = false;
         correctAnswers++;
         combinedCorrectAnswers++;
+
         if(level == highestRound)
         {
             score += 1 * level;
         }
+
         roundScore += 1 * level;
         playerAnswer = true;
+
         if(settingsMenu.soundOn)
         {
-            Debug.Log("Äänet on päällä, ja oikein meni!");
             AudioManager.Instance.PlaySound("CorrectSFX");
-        }
-        else if(!settingsMenu.soundOn)
-        {
-            Debug.Log("Äänet ei ole päällä, mutta silti oikein meni!");
         }
     }
 
@@ -163,14 +162,10 @@ public class GameManager : MonoBehaviour
         answering = false;
         playerAnswer = false;
         wrongAnswers++;
+
         if (settingsMenu.soundOn)
         {
-            Debug.Log("Äänet on päällä, mutta väärin meni!");
             AudioManager.Instance.PlaySound("IncorrectSFX");
-        }
-        else if (!settingsMenu.soundOn)
-        {
-            Debug.Log("Äänet ei ole päällä, väärin meni kuitenki!");
         }
     }
 

@@ -3,35 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class DatabaseManager : MonoBehaviour
+public class DatabaseHandler : MonoBehaviour
 {
-    public Question currentQuestion;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private QuestionManager qManager;
+
+    private void Awake()
     {
-        StartCoroutine(GetQuestion());
-        
+        qManager = gameObject.GetComponent<QuestionManager>();
+        StartCoroutine(GetQuestionFromDB());
     }
-    IEnumerator GetQuestion()
+
+    IEnumerator GetQuestionFromDB()
     {
         using(UnityWebRequest www = UnityWebRequest.Get("http://users.metropolia.fi/~niklaslm/Tietokilpa/GetQuestion.php"))
         {
             yield return www.SendWebRequest();
-            if (www.isNetworkError || www.isHttpError)
+            if(www.isNetworkError || www.isHttpError)
             {
+                Debug.Log("Network or HTTP error occured!");
                 Debug.Log(www.error);
             }
             else
             {
                 Debug.Log(www.downloadHandler.text);
-                currentQuestion.Parse(www.downloadHandler.text);
-
+                qManager.ParseText(www.downloadHandler.text);
                 byte[] results = www.downloadHandler.data;
             }
-
-
         }
-     
     }
 }
