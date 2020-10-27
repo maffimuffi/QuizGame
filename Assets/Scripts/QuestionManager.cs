@@ -78,12 +78,16 @@ public class QuestionManager : MonoBehaviour
                 stringList.Add(tempString);
                 tempString = "";
             }
+            else if(c == '/')
+            {
+                stringList.Add(tempString);
+                tempString = "";
+            }
             else
             {
                 tempString += c;
             }
         }
-        stringList.Add(tempString);
         SetTexts();
     }
 

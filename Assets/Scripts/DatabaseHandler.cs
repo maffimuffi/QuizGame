@@ -11,6 +11,10 @@ public class DatabaseHandler : MonoBehaviour
     private void Awake()
     {
         qManager = gameObject.GetComponent<QuestionManager>();
+    }
+
+    public void GetQuestion()
+    {
         StartCoroutine(GetQuestionFromDB());
     }
 
