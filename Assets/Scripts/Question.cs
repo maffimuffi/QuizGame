@@ -8,6 +8,7 @@ public class Question : MonoBehaviour
 {
     public int answerSize = 4;
     public List<string> stringList = new List<string>();
+    public List<List<string>> questionList = new List<List<string>>();
     public TMP_Text QuestionText;
     public TMP_Text AnswerAText;
     public TMP_Text AnswerBText;
@@ -54,12 +55,17 @@ public class Question : MonoBehaviour
                 stringList.Add(tempString);
                 tempString="";
             }
+            else if(c=='/')
+            {
+                stringList.Add(tempString);
+                tempString="";
+            }
             else
             {
                 tempString += c;
             }
         }
-        stringList.Add(tempString);
+        
         SetText();
     }
     public void SetText()
