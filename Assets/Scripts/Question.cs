@@ -8,7 +8,8 @@ public class Question : MonoBehaviour
 {
     public int answerSize = 4;
     public List<string> stringList = new List<string>();
-    public List<List<string>> questionList = new List<List<string>>();
+    
+    public List<QuestionList> questionList = new List<QuestionList>();
     public TMP_Text QuestionText;
     public TMP_Text AnswerAText;
     public TMP_Text AnswerBText;
@@ -45,6 +46,7 @@ public class Question : MonoBehaviour
     }
     public void Parse(string text)
     {
+        stringList.Clear();
         string tempString = "";
         
         foreach(char c in text )
@@ -59,11 +61,29 @@ public class Question : MonoBehaviour
             {
                 stringList.Add(tempString);
                 tempString="";
+                QuestionList list = new QuestionList();
+                foreach(string s in stringList)
+                {
+                    list.optionsList.Add(s);
+                }
+                questionList.Add(list);
+                stringList.Clear();
             }
             else
             {
                 tempString += c;
             }
+        }
+        
+        RandomQuestion();
+    }
+    public void RandomQuestion()
+    {
+        stringList.Clear();
+        int randomInt =UnityEngine.Random.Range(0,questionList.Count);
+        foreach(string s in questionList[randomInt].optionsList)
+        {
+            stringList.Add(s);
         }
         
         SetText();
@@ -104,6 +124,10 @@ public class Question : MonoBehaviour
         {
             ShuffleButtons();
         }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            RandomQuestion();
+        }
     }
     // remove listeners from buttons
     public void ClearButtonListeners()
@@ -123,4 +147,10 @@ public class Question : MonoBehaviour
     {
 
     }
+}
+[System.Serializable]
+public class QuestionList
+{
+    public List<string> optionsList = new List<string>();
+
 }
