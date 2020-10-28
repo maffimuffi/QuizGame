@@ -294,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answerSize: 4
   stringList: []
+  questionList: []
   QuestionText: {fileID: 1209795690}
   AnswerAText: {fileID: 1077967474}
   AnswerBText: {fileID: 932974689}
@@ -308,7 +309,6 @@ MonoBehaviour:
   - {fileID: 1207895909}
   - {fileID: 1291202377}
   - {fileID: 972451948}
-  correctAnswer: 0
 --- !u!1 &231968769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentQuestion: {fileID: 136988786}
+  SQLsearch: Select kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4 FROM
+    kysymykset
 --- !u!1 &932974687
 GameObject:
   m_ObjectHideFlags: 0

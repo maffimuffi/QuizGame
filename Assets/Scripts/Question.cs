@@ -39,6 +39,7 @@ public class Question : MonoBehaviour
     public void WrongAnswer()
     {
         Debug.Log("Väärin meni");
+        
     }
     public void CorrectAnswer()
     {
