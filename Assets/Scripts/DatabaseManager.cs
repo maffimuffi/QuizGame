@@ -44,12 +44,6 @@ public class DatabaseManager : MonoBehaviour
                 //byte[] results = www.downloadHandler.data;
             }
 
-
-
-
-           
-
-
         }
             
         
