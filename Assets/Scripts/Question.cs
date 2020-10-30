@@ -8,6 +8,7 @@ public class Question : MonoBehaviour
 {
     public int answerSize = 4;
     public List<string> stringList = new List<string>();
+    public List<string> finalStringList = new List<string>();
     
     public List<QuestionList> questionList = new List<QuestionList>();
     public TMP_Text QuestionText;
@@ -38,12 +39,17 @@ public class Question : MonoBehaviour
     }
     public void WrongAnswer()
     {
-        Debug.Log("Väärin meni");
+        Debug.Log("Väärin");
+        FindObjectOfType<Timer>().ResetTimer();
+        RandomQuestion();
+        
         
     }
     public void CorrectAnswer()
     {
         Debug.Log("Oikein");
+        FindObjectOfType<Timer>().ResetTimer();
+        RandomQuestion();
     }
     public void Parse(string text)
     {
@@ -52,8 +58,11 @@ public class Question : MonoBehaviour
         
         foreach(char c in text )
         {
-            
-            if(c== '_')
+            if(c==';')
+            {
+                tempString ="";
+            }
+            else if(c== '_')
             {
                 stringList.Add(tempString);
                 tempString="";
@@ -80,22 +89,36 @@ public class Question : MonoBehaviour
     }
     public void RandomQuestion()
     {
+        finalStringList.Clear();
         stringList.Clear();
         int randomInt =UnityEngine.Random.Range(0,questionList.Count);
         foreach(string s in questionList[randomInt].optionsList)
         {
-            stringList.Add(s);
+            if(s != "")
+            {
+                stringList.Add(s);
+            }
+           
+        }
+        finalStringList.Add(stringList[0]);
+        for(int i = 0;i<4;i++)
+        {
+            int randomNumber = UnityEngine.Random.Range(1,stringList.Count);
+            finalStringList.Add(stringList[randomNumber]);
+            stringList.Remove(stringList[randomNumber]);
+            
+           
         }
         
         SetText();
     }
     public void SetText()
     {
-        QuestionText.text = stringList[0];
-        AnswerAText.text = stringList[1];
-        AnswerBText.text = stringList[2];
-        AnswerCText.text = stringList[3];
-        AnswerDText.text = stringList[4];
+        QuestionText.text = finalStringList[0];
+        AnswerAText.text = finalStringList[1];
+        AnswerBText.text = finalStringList[2];
+        AnswerCText.text = finalStringList[3];
+        AnswerDText.text = finalStringList[4];
         ShuffleButtons();
     }
     public void ShuffleButtons()
