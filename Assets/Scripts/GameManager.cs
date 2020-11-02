@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject infoScreen;
     public GameObject roundEndScreen;
     public GameObject gameEndScreen;
+    
 
     // Texts
     public TMP_Text gameInfoText;
@@ -42,18 +43,21 @@ public class GameManager : MonoBehaviour
 
     //Scripts
     public MainMenu mainMenu;
-    public QuestionManager qmanager;
+    //public QuestionManager qmanager;
     public SettingsMenu settingsMenu;
-    public DatabaseHandler dbHandler;
+    //public DatabaseHandler dbHandler;
+    public DatabaseManager databaseManager;
+    public Question question;
 
     private void Awake()
     {
         gameState = 0;
-        qmanager = gameObject.GetComponent<QuestionManager>();
-        dbHandler = gameObject.GetComponent<DatabaseHandler>();
+        //qmanager = gameObject.GetComponent<QuestionManager>();
+        //dbHandler = gameObject.GetComponent<DatabaseHandler>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
-    }
+      
+        }
 
     // Update is called once per frame
     void Update()
@@ -80,8 +84,10 @@ public class GameManager : MonoBehaviour
         continuedToNextRound = false;
         gameState = 2;
         SavePlayer();
-        qmanager.ChangeAnswerPositions();
-        dbHandler.GetQuestion();
+        databaseManager.FetchQuestion();
+        question.Initialize();
+        //qmanager.ChangeAnswerPositions();
+        //dbHandler.GetQuestion();
     }
 
     public void NewRound()
@@ -94,8 +100,9 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 2;
         continuedToNextRound = false;
-        qmanager.ChangeAnswerPositions();
-        dbHandler.GetQuestion();
+        databaseManager.FetchQuestion();
+        //qmanager.ChangeAnswerPositions();
+        //dbHandler.GetQuestion();
     }
 
     public void NextQuestion()
@@ -113,8 +120,9 @@ public class GameManager : MonoBehaviour
             timeLeft = 60f;
             infoScreen.SetActive(false);
             gameState = 2;
-            qmanager.ChangeAnswerPositions();
-            dbHandler.GetQuestion();
+            databaseManager.FetchQuestion();
+            //qmanager.ChangeAnswerPositions();
+            //dbHandler.GetQuestion();
         }
     }
 

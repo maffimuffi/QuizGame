@@ -13,11 +13,12 @@ public class DatabaseManager : MonoBehaviour
     void Start()
     {
        
+        //StartCoroutine(GetQuestion());
+        
+    }
+    public void FetchQuestion()
+    {
         StartCoroutine(GetQuestion());
-        
-       
-        
-        
     }
     IEnumerator GetQuestion()
     {  

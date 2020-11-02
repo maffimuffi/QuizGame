@@ -27,6 +27,10 @@ public class Question : MonoBehaviour
     void Start()
     {
         
+    }
+    public void Initialize()
+    {
+        Debug.Log("Initialized Question");
         AnswerAText = AnswerAButton.GetComponentInChildren<TMP_Text>();
         AnswerBText = AnswerBButton.GetComponentInChildren<TMP_Text>();
         AnswerCText = AnswerCButton.GetComponentInChildren<TMP_Text>();
@@ -40,16 +44,16 @@ public class Question : MonoBehaviour
     public void WrongAnswer()
     {
         Debug.Log("Väärin");
-        FindObjectOfType<Timer>().ResetTimer();
-        RandomQuestion();
+        //FindObjectOfType<Timer>().ResetTimer();
+        //RandomQuestion();
         
         
     }
     public void CorrectAnswer()
     {
         Debug.Log("Oikein");
-        FindObjectOfType<Timer>().ResetTimer();
-        RandomQuestion();
+        //FindObjectOfType<Timer>().ResetTimer();
+        //RandomQuestion();
     }
     public void Parse(string text)
     {
@@ -101,9 +105,10 @@ public class Question : MonoBehaviour
            
         }
         finalStringList.Add(stringList[0]);
-        for(int i = 0;i<4;i++)
+        finalStringList.Add(stringList[1]);
+        for(int i = 0;i<3;i++)
         {
-            int randomNumber = UnityEngine.Random.Range(1,stringList.Count);
+            int randomNumber = UnityEngine.Random.Range(2,stringList.Count);
             finalStringList.Add(stringList[randomNumber]);
             stringList.Remove(stringList[randomNumber]);
             
