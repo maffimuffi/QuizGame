@@ -21,6 +21,7 @@ public class Question : MonoBehaviour
     public Button AnswerCButton;
     public Button AnswerDButton;
     public List <Button> AnswerButtons = new List<Button>();
+    public List<int> UsedQuestions = new List<int>();
     
 
     // Start is called before the first frame update
@@ -58,13 +59,35 @@ public class Question : MonoBehaviour
     public void Parse(string text)
     {
         stringList.Clear();
+        questionList.Clear();
         string tempString = "";
+        QuestionList list = new QuestionList();
         
         foreach(char c in text )
         {
             if(c==';')
             {
                 tempString ="";
+            }
+            else if(c== '{')
+            {
+                if(list != null)
+                {
+                    if(!UsedQuestions.Contains( int.Parse(tempString)))
+                    {
+                        list.id = int.Parse(tempString);
+                        questionList.Add(list);
+                    }
+                    else
+                    {
+                        Debug.Log("Question has been used");
+                    }
+                   
+                    
+                   
+                }
+                //Debug.Log(int.Parse(tempString));
+                tempString = "";
             }
             else if(c== '_')
             {
@@ -75,12 +98,11 @@ public class Question : MonoBehaviour
             {
                 stringList.Add(tempString);
                 tempString="";
-                QuestionList list = new QuestionList();
+                list = new QuestionList();
                 foreach(string s in stringList)
                 {
                     list.optionsList.Add(s);
                 }
-                questionList.Add(list);
                 stringList.Clear();
             }
             else
@@ -93,9 +115,18 @@ public class Question : MonoBehaviour
     }
     public void RandomQuestion()
     {
+        int randomInt = 0;
         finalStringList.Clear();
         stringList.Clear();
-        int randomInt =UnityEngine.Random.Range(0,questionList.Count);
+        if(questionList.Count ==0)
+        {
+            Debug.Log("No unused questions found, Clearing used QuestionsList");
+            UsedQuestions.Clear();
+            return;
+        }
+        randomInt =UnityEngine.Random.Range(0,questionList.Count);
+        
+        UsedQuestions.Add(questionList[randomInt].id);
         foreach(string s in questionList[randomInt].optionsList)
         {
             if(s != "")
@@ -181,5 +212,6 @@ public class Question : MonoBehaviour
 public class QuestionList
 {
     public List<string> optionsList = new List<string>();
+    public int id;
 
 }

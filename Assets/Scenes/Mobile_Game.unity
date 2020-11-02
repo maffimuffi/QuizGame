@@ -2279,6 +2279,7 @@ MonoBehaviour:
   - {fileID: 2129121087}
   - {fileID: 396693985}
   - {fileID: 905693267}
+  UsedQuestions: 
 --- !u!4 &573352461
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,7 +2307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentQuestion: {fileID: 573352460}
-  SQLsearch: Select kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
+  SQLsearch: Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
     FROM kysymykset
 --- !u!114 &573352463
 MonoBehaviour:

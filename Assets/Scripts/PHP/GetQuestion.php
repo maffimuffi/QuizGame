@@ -28,9 +28,10 @@
      echo ";";
  
      while ($row = mysqli_fetch_array($result)) {
+       
         echo $row['kysymys']."_". $row['vaihtoehto1']."_". $row['vaihtoehto2'] ."_". $row['vaihtoehto3'] ."_". $row['vaihtoehto4']. "_".
         $row['vaihtoehto5'] ."_" .$row['vaihtoehto6'] ."_".$row['vaihtoehto7'] ."_".$row['vaihtoehto8'] ."_".$row['vaihtoehto9'] ."_".$row['vaihtoehto10'] ."_"
-        ."/"  . PHP_EOL;
+        ."/" .$row['id']. "{"  . PHP_EOL;
          
      }
      echo $_REQUEST["var1"];
