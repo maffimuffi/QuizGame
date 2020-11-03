@@ -1178,7 +1178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247562497
 GameObject:
@@ -4233,7 +4233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1249997250
 GameObject:
@@ -4528,7 +4528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1307305875
 GameObject:
@@ -4746,7 +4746,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewRound
+        m_MethodName: ContinueToNextRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6026,18 +6026,6 @@ MonoBehaviour:
       - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: NextQuestion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 244627261}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ContinueToNextRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
