@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7382219900198372331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7382219900198372333}
+  - component: {fileID: 7382219900198372335}
+  - component: {fileID: 7382219900198372334}
+  - component: {fileID: 7382219900198372332}
+  m_Layer: 0
+  m_Name: GameManager(2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7382219900198372333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382219900198372331}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000015258789, y: 0.000030517578, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7382219900198372335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382219900198372331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f83c6393e06f74cb3d94137c9ec06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  repeatRound: 0
+  correctAnswers: 0
+  combinedCorrectAnswers: 0
+  wrongAnswers: 0
+  questionNumber: 0
+  score: 0
+  highscore: 0
+  gameState: 0
+  roundScore: 0
+  highestRound: 0
+  timeLeft: 60
+  answering: 0
+  playerAnswer: 0
+  continuedToNextRound: 0
+  gameEnded: 0
+  infoScreen: {fileID: 0}
+  roundEndScreen: {fileID: 0}
+  gameEndScreen: {fileID: 0}
+  gameInfoText: {fileID: 0}
+  timerText: {fileID: 0}
+  questionInfoText: {fileID: 0}
+  roundEndText: {fileID: 0}
+  gameEndText: {fileID: 0}
+  mainMenu: {fileID: 0}
+  qmanager: {fileID: 0}
+  settingsMenu: {fileID: 0}
+  dbHandler: {fileID: 0}
+--- !u!114 &7382219900198372334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382219900198372331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92cc6f28bb06b4d4985b182534beac8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentQuestion: {fileID: 7382219900198372332}
+  SQLsearch: Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
+    FROM kysymykset
+--- !u!114 &7382219900198372332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382219900198372331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b531ef5c99f77b4dbd79c9c652aa562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerSize: 4
+  stringList: []
+  finalStringList: []
+  questionList: []
+  QuestionText: {fileID: 0}
+  AnswerAText: {fileID: 0}
+  AnswerBText: {fileID: 0}
+  AnswerCText: {fileID: 0}
+  AnswerDText: {fileID: 0}
+  AnswerAButton: {fileID: 0}
+  AnswerBButton: {fileID: 0}
+  AnswerCButton: {fileID: 0}
+  AnswerDButton: {fileID: 0}
+  AnswerButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UsedQuestions: 

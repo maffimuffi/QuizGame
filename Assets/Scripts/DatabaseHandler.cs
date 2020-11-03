@@ -15,7 +15,7 @@ public class DatabaseHandler : MonoBehaviour
         qManager = gameObject.GetComponent<QuestionManager>();
     }
 
-    public void GetQuestion()
+    public void FetchQuestion()
     {
         StartCoroutine(GetQuestionFromDB());
     }
@@ -30,7 +30,7 @@ public class DatabaseHandler : MonoBehaviour
         {
            
             yield return www.SendWebRequest();
-            
+
 
             if (www.isNetworkError || www.isHttpError)
             {
@@ -38,28 +38,11 @@ public class DatabaseHandler : MonoBehaviour
             }
             else
             {
-                
+
                 Debug.Log(www.downloadHandler.text);
                 qManager.ParseText(www.downloadHandler.text);
                 //byte[] results = www.downloadHandler.data;
             }
-
         }
-        /*
-        using(UnityWebRequest www = UnityWebRequest.Get("http://users.metropolia.fi/~niklaslm/Tietokilpa/GetQuestion.php"))
-        {
-            yield return www.SendWebRequest();
-            if(www.isNetworkError || www.isHttpError)
-            {
-                Debug.Log("Network or HTTP error occured!");
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log(www.downloadHandler.text);
-                qManager.ParseText(www.downloadHandler.text);
-                byte[] results = www.downloadHandler.data;
-            }
-        }*/
     }
 }

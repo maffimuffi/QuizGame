@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EndGame
         m_Mode: 1
@@ -1067,15 +1067,15 @@ GameObject:
   m_Component:
   - component: {fileID: 244627262}
   - component: {fileID: 244627261}
-  - component: {fileID: 244627260}
   - component: {fileID: 244627259}
+  - component: {fileID: 244627260}
   m_Layer: 0
-  m_Name: GameManager (1)
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &244627259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,8 +1088,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ffe0198359c10e4eb0e280fe2d85e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SQLsearch: Select kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4 FROM
-    kysymykset Where aihepiiri = 'PO'
+  SQLsearch: Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
+    FROM kysymykset
   qManager: {fileID: 0}
 --- !u!114 &244627260
 MonoBehaviour:
@@ -1118,11 +1118,14 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   stringList: []
+  finalStringList: []
+  usedQuestions: 
+  questionList: []
   questionText: {fileID: 1869237345}
-  correctText: {fileID: 0}
-  wrongText1: {fileID: 0}
-  wrongText2: {fileID: 0}
-  wrongText3: {fileID: 0}
+  correctText: {fileID: 349671668}
+  wrongText1: {fileID: 2017838669}
+  wrongText2: {fileID: 214433194}
+  wrongText3: {fileID: 637121406}
 --- !u!114 &244627261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,9 +1163,9 @@ MonoBehaviour:
   roundEndText: {fileID: 602858442}
   gameEndText: {fileID: 1769412341}
   mainMenu: {fileID: 1566021162}
+  qmanager: {fileID: 0}
   settingsMenu: {fileID: 705419515}
-  databaseManager: {fileID: 0}
-  question: {fileID: 0}
+  dbHandler: {fileID: 0}
 --- !u!4 &244627262
 Transform:
   m_ObjectHideFlags: 0
@@ -1175,7 +1178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247562497
 GameObject:
@@ -1788,11 +1791,11 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -887.5}
   m_SizeDelta: {x: 800, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &396693985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1836,7 +1839,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: WrongAnswer
         m_Mode: 1
@@ -2230,125 +2233,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505901827}
   m_CullTransparentMesh: 0
---- !u!1 &573352459
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 573352461}
-  - component: {fileID: 573352463}
-  - component: {fileID: 573352462}
-  - component: {fileID: 573352460}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &573352460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573352459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b531ef5c99f77b4dbd79c9c652aa562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  answerSize: 4
-  stringList: []
-  finalStringList: []
-  questionList: []
-  QuestionText: {fileID: 1869237345}
-  AnswerAText: {fileID: 0}
-  AnswerBText: {fileID: 2017838669}
-  AnswerCText: {fileID: 214433194}
-  AnswerDText: {fileID: 637121406}
-  AnswerAButton: {fileID: 1307305877}
-  AnswerBButton: {fileID: 2129121087}
-  AnswerCButton: {fileID: 396693985}
-  AnswerDButton: {fileID: 905693267}
-  AnswerButtons:
-  - {fileID: 1307305877}
-  - {fileID: 2129121087}
-  - {fileID: 396693985}
-  - {fileID: 905693267}
-  UsedQuestions: 
---- !u!4 &573352461
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573352459}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000015258789, y: 0.000030517578, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &573352462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573352459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92cc6f28bb06b4d4985b182534beac8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentQuestion: {fileID: 573352460}
-  SQLsearch: Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
-    FROM kysymykset
---- !u!114 &573352463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 573352459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6f83c6393e06f74cb3d94137c9ec06c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 0
-  repeatRound: 0
-  correctAnswers: 0
-  combinedCorrectAnswers: 0
-  wrongAnswers: 0
-  questionNumber: 0
-  score: 0
-  highscore: 0
-  gameState: 0
-  roundScore: 0
-  highestRound: 0
-  timeLeft: 60
-  answering: 0
-  playerAnswer: 0
-  continuedToNextRound: 0
-  gameEnded: 0
-  infoScreen: {fileID: 1406281453}
-  roundEndScreen: {fileID: 1627640355}
-  gameEndScreen: {fileID: 100905647}
-  gameInfoText: {fileID: 240810935}
-  timerText: {fileID: 319433199}
-  questionInfoText: {fileID: 505026851}
-  roundEndText: {fileID: 602858442}
-  gameEndText: {fileID: 1769412341}
-  mainMenu: {fileID: 1566021162}
-  settingsMenu: {fileID: 705419515}
-  databaseManager: {fileID: 573352462}
-  question: {fileID: 573352460}
 --- !u!1 &595322579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,11 +3166,11 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -1212.5}
   m_SizeDelta: {x: 800, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &905693267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3330,7 +3214,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: WrongAnswer
         m_Mode: 1
@@ -3919,7 +3803,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ExitToMenu
         m_Mode: 1
@@ -4644,7 +4528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1307305875
 GameObject:
@@ -4680,11 +4564,11 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -237.49997}
   m_SizeDelta: {x: 800, y: 150}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1307305877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4728,7 +4612,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CorrectAnswer
         m_Mode: 1
@@ -4860,7 +4744,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: NewRound
         m_Mode: 1
@@ -5237,7 +5121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ExitToMenu
         m_Mode: 1
@@ -5469,7 +5353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875004825d93b0d4ab4012ba1088a121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 573352463}
+  gameManager: {fileID: 244627261}
   mainmenuScreen: {fileID: 1566021160}
   gameScreen: {fileID: 2056686061}
   settingsScreen: {fileID: 705419513}
@@ -6139,9 +6023,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: NextQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 244627261}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ContinueToNextRound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6837,7 +6733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2056686062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6956,7 +6852,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 573352463}
+      - m_Target: {fileID: 244627261}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: WrongAnswer
         m_Mode: 1
@@ -7021,8 +6917,8 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -562.49994}
   m_SizeDelta: {x: 800, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}

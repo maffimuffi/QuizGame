@@ -43,17 +43,17 @@ public class GameManager : MonoBehaviour
 
     //Scripts
     public MainMenu mainMenu;
-    //public QuestionManager qmanager;
+    public QuestionManager qmanager;
     public SettingsMenu settingsMenu;
-    //public DatabaseHandler dbHandler;
-    public DatabaseManager databaseManager;
-    public Question question;
+    public DatabaseHandler dbHandler;
+    //public DatabaseManager databaseManager;
+    //public Question question;
 
     private void Awake()
     {
         gameState = 0;
-        //qmanager = gameObject.GetComponent<QuestionManager>();
-        //dbHandler = gameObject.GetComponent<DatabaseHandler>();
+        qmanager = gameObject.GetComponent<QuestionManager>();
+        dbHandler = gameObject.GetComponent<DatabaseHandler>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
       
@@ -84,10 +84,10 @@ public class GameManager : MonoBehaviour
         continuedToNextRound = false;
         gameState = 2;
         SavePlayer();
-        databaseManager.FetchQuestion();
-        question.Initialize();
-        //qmanager.ChangeAnswerPositions();
-        //dbHandler.GetQuestion();
+        //databaseManager.FetchQuestion();
+        //question.Initialize();
+        qmanager.ChangeAnswerPositions();
+        dbHandler.FetchQuestion();
     }
 
     public void NewRound()
@@ -100,9 +100,9 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 2;
         continuedToNextRound = false;
-        databaseManager.FetchQuestion();
-        //qmanager.ChangeAnswerPositions();
-        //dbHandler.GetQuestion();
+        //databaseManager.FetchQuestion();
+        dbHandler.FetchQuestion();
+        qmanager.ChangeAnswerPositions();
     }
 
     public void NextQuestion()
@@ -120,10 +120,16 @@ public class GameManager : MonoBehaviour
             timeLeft = 60f;
             infoScreen.SetActive(false);
             gameState = 2;
-            databaseManager.FetchQuestion();
-            //qmanager.ChangeAnswerPositions();
-            //dbHandler.GetQuestion();
+            //databaseManager.FetchQuestion();
+            dbHandler.FetchQuestion();
+            qmanager.ChangeAnswerPositions();
         }
+    }
+
+    public void ContinueToNextRound()
+    {
+        continuedToNextRound = true;
+        roundEndScreen.SetActive(false);
     }
 
     public void ExitToMenu()
@@ -142,12 +148,6 @@ public class GameManager : MonoBehaviour
         mainMenu.gameScreen.SetActive(false);
         mainMenu.mainmenuScreen.SetActive(true);
         gameState = 0;
-    }
-
-    public void ContinueToNextRound()
-    {
-        continuedToNextRound = true;
-        roundEndScreen.SetActive(false);
     }
 
     public void CorrectAnswer()
