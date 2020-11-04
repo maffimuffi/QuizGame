@@ -120,9 +120,9 @@ public class GameManager : MonoBehaviour
         {
             dbHandler.FetchQuestion();
             qmanager.ChangeAnswerPositions();
+            infoScreen.SetActive(false);
             answering = true;
             timeLeft = 60f;
-            infoScreen.SetActive(false);
             gameState = 1;
             //databaseManager.FetchQuestion();
         }
@@ -195,13 +195,20 @@ public class GameManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadGame();
 
         level = data.level;
+        repeatRound = data.repeatRound;
         correctAnswers = data.correctAnswers;
+        wrongAnswers = data.wrongAnswers;
+        combinedCorrectAnswers = data.combinedCorrectAnswers;
+        questionNumber = data.questionNumber;
         score = data.score;
         highscore = data.highscore;
         gameState = data.gameState;
+        roundScore = data.roundScore;
+        highestRound = data.highestRound;
         timeLeft = data.timeLeft;
         answering = data.answering;
         playerAnswer = data.playerAnswer;
+        continuedToNextRound = data.continuedToNextRound;
     }
 
     // Checks what state the game is currently in
