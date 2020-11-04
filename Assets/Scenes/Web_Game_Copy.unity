@@ -2645,6 +2645,8 @@ GameObject:
   m_Component:
   - component: {fileID: 705419514}
   - component: {fileID: 705419515}
+  - component: {fileID: 705419517}
+  - component: {fileID: 705419516}
   m_Layer: 5
   m_Name: SettingsScreen
   m_TagString: Untagged
@@ -2693,6 +2695,37 @@ MonoBehaviour:
   soundButton: {fileID: 1874225712}
   musicOn: 0
   soundOn: 0
+--- !u!225 &705419516
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705419513}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!95 &705419517
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705419513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e65030ef624dd134180a4e204fe53982, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,6 +4952,7 @@ GameObject:
   - component: {fileID: 1442859333}
   - component: {fileID: 1442859332}
   - component: {fileID: 1442859331}
+  - component: {fileID: 1442859334}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -5001,6 +5035,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1442859334}
+        m_TargetAssemblyTypeName: MenuOpener, Assembly-CSharp
+        m_MethodName: OpenGameScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1442859332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5039,6 +5085,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442859329}
   m_CullTransparentMesh: 0
+--- !u!114 &1442859334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442859329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ebfa1332fd41a47a8ccfa7d812f469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScreen: {fileID: 705419513}
 --- !u!1 &1516600199
 GameObject:
   m_ObjectHideFlags: 0
@@ -5183,6 +5242,7 @@ GameObject:
   - component: {fileID: 1556393625}
   - component: {fileID: 1556393624}
   - component: {fileID: 1556393623}
+  - component: {fileID: 1556393626}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -5265,6 +5325,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1556393626}
+        m_TargetAssemblyTypeName: MenuOpener, Assembly-CSharp
+        m_MethodName: OpenGameScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1556393624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5303,6 +5375,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556393621}
   m_CullTransparentMesh: 0
+--- !u!114 &1556393626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556393621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ebfa1332fd41a47a8ccfa7d812f469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScreen: {fileID: 1566021160}
 --- !u!1 &1566021160
 GameObject:
   m_ObjectHideFlags: 0
@@ -5313,6 +5398,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1566021161}
   - component: {fileID: 1566021162}
+  - component: {fileID: 1566021164}
+  - component: {fileID: 1566021163}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -5357,6 +5444,37 @@ MonoBehaviour:
   mainmenuScreen: {fileID: 1566021160}
   gameScreen: {fileID: 2056686061}
   settingsScreen: {fileID: 705419513}
+--- !u!95 &1566021163
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566021160}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e65030ef624dd134180a4e204fe53982, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &1566021164
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566021160}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1602716571
 GameObject:
   m_ObjectHideFlags: 0
