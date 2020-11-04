@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        dbHandler.FetchQuestion();
+        qmanager.ChangeAnswerPositions();
+        mainMenu.mainmenuScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(true);
         level = 1;
         correctAnswers = 0;
         combinedCorrectAnswers = 0;
@@ -82,27 +86,25 @@ public class GameManager : MonoBehaviour
         highestRound = 1;
         answering = true;
         continuedToNextRound = false;
-        gameState = 2;
+        gameState = 1;
         SavePlayer();
         //databaseManager.FetchQuestion();
         //question.Initialize();
-        qmanager.ChangeAnswerPositions();
-        dbHandler.FetchQuestion();
     }
 
     public void NewRound()
     {
+        dbHandler.FetchQuestion();
+        qmanager.ChangeAnswerPositions();
         roundEndScreen.SetActive(false);
         correctAnswers = 0;
         questionNumber = 1;
         roundScore = 0;
         timeLeft = 60f;
         answering = true;
-        gameState = 2;
+        gameState = 1;
         continuedToNextRound = false;
         //databaseManager.FetchQuestion();
-        dbHandler.FetchQuestion();
-        qmanager.ChangeAnswerPositions();
     }
 
     public void NextQuestion()
@@ -112,17 +114,17 @@ public class GameManager : MonoBehaviour
         {
             questionNumber = 10;
             infoScreen.SetActive(false);
-            gameState = 4;
+            gameState = 3;
         }
         else
         {
+            dbHandler.FetchQuestion();
+            qmanager.ChangeAnswerPositions();
             answering = true;
             timeLeft = 60f;
             infoScreen.SetActive(false);
-            gameState = 2;
+            gameState = 1;
             //databaseManager.FetchQuestion();
-            dbHandler.FetchQuestion();
-            qmanager.ChangeAnswerPositions();
         }
     }
 
@@ -205,15 +207,7 @@ public class GameManager : MonoBehaviour
     // Checks what state the game is currently in
     void CheckGameState()
     {
-        if (gameState == 0)
-        {
-            // Game is not on and the game is in the main menu
-        }
         if (gameState == 1)
-        {
-            StartNewGame();
-        }
-        if (gameState == 2)
         {
             // Player is answering a question
             if (answering)
@@ -228,17 +222,17 @@ public class GameManager : MonoBehaviour
             // Must check if the player has answered
             if (!answering)
             {
-                gameState = 3;
+                gameState = 2;
             }
             // If timer goes down to 0, player failed
             if (timeLeft <= 0 && answering)
             {
                 timeLeft = 0f;
                 playerAnswer = false;
-                gameState = 3;
+                gameState = 2;
             }
         }
-        if (gameState == 3)
+        if (gameState == 2)
         {
             // Player answered a question
             if (playerAnswer == true)
@@ -253,7 +247,7 @@ public class GameManager : MonoBehaviour
                 questionInfoText.text = "Väärin!";
             }
         }
-        if (gameState == 4)
+        if (gameState == 3)
         {
             // Level has ended
 
@@ -282,7 +276,7 @@ public class GameManager : MonoBehaviour
                 {
                     score -= 1 * repeatRound * level;
                     level = 10;
-                    gameState = 5;
+                    gameState = 4;
                 }
             }
             // Player stays in the current level
@@ -321,7 +315,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (gameState == 5)
+        if (gameState == 4)
         {
             // Game has ended, open game ending screen
             roundEndScreen.SetActive(false);

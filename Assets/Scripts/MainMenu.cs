@@ -22,9 +22,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartNewButton()
     {
-        mainmenuScreen.SetActive(false);
-        gameScreen.SetActive(true);
-        gameManager.gameState = 1;
+        gameManager.StartNewGame();
     }
 
     public void ContinueButton()
