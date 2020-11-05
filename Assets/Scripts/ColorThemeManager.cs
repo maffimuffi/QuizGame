@@ -2,24 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ColorThemeManager : MonoBehaviour
 {
-    /*
-    // GameObjects to change
-    [SerializeField] private GameObject backGround;
-    [SerializeField] private GameObject correctButton;
-    [SerializeField] private GameObject wrongButon1;
-    [SerializeField] private GameObject wrongButton2;
-    [SerializeField] private GameObject wrongButton3;
-
-    [SerializeField] private GameObject questionBox;
-    [SerializeField] private GameObject answerBox;
-    */
     // Containers for all objects with categories
-    [SerializeField] private GameObject[] baseColorObjects;
-    [SerializeField] private GameObject[] secondaryColorObjects;
-    [SerializeField] private GameObject[] textColorObjects;
+    [SerializeField] private Image[] baseColorObjects;
+    [SerializeField] private Image[] secondaryColorObjects;
+    [SerializeField] private TMP_Text[] textColorObjects;
 
     // musicButton.image.color = Color.red;
     void Awake()
@@ -34,17 +24,17 @@ public class ColorThemeManager : MonoBehaviour
 
     void Theme1()
     {
-        foreach(GameObject obj1 in baseColorObjects)
+        foreach(Image obj1 in baseColorObjects)
         {
-            obj1.GetComponent<Image>().color = new Color32(0, 33, 43, 255);
+            obj1.color = new Color32(0, 33, 43, 255);
         }
-        foreach (GameObject obj2 in secondaryColorObjects)
+        foreach (Image obj2 in secondaryColorObjects)
         {
-            obj2.GetComponent<Image>().color = new Color32(0, 57, 75, 255);
+            obj2.color = new Color32(0, 57, 75, 255);
         }
-        foreach (GameObject obj in textColorObjects)
+        foreach (TMP_Text obj3 in textColorObjects)
         {
-            obj.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+            obj3.color = new Color32(255, 255, 255, 255);
         }
     }
 }
