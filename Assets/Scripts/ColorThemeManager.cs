@@ -36,15 +36,15 @@ public class ColorThemeManager : MonoBehaviour
     {
         foreach(GameObject obj1 in baseColorObjects)
         {
-            obj1.GetComponent<Image>().color = new Color(0, 33, 43);
+            obj1.GetComponent<Image>().color = new Color32(0, 33, 43, 255);
         }
         foreach (GameObject obj2 in secondaryColorObjects)
         {
-            obj2.GetComponent<Image>().color = new Color(0, 57, 75);
+            obj2.GetComponent<Image>().color = new Color32(0, 57, 75, 255);
         }
         foreach (GameObject obj in textColorObjects)
         {
-            obj.GetComponent<Image>().color = new Color(255, 0, 0);
+            obj.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
         }
     }
 }
