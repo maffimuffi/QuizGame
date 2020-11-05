@@ -8,6 +8,8 @@ TagManager:
   - WrongButton1
   - WrongButton2
   - WrongButton3
+  - PrimaryColor
+  - SecondaryColor
   layers:
   - Default
   - TransparentFX

@@ -7,14 +7,18 @@ using TMPro;
 public class ColorThemeManager : MonoBehaviour
 {
     // Containers for all objects with categories
-    [SerializeField] private Image[] baseColorObjects;
-    [SerializeField] private Image[] secondaryColorObjects;
-    [SerializeField] private TMP_Text[] textColorObjects;
+    [SerializeField] private List<Image> baseColorObjects = new List<Image>();
+    [SerializeField] private List<Image> secondaryColorObjects= new List<Image>();
+    [SerializeField] private List<TMP_Text> textColorObjects = new List<TMP_Text>();
+
+    public Canvas canvas;
 
     // musicButton.image.color = Color.red;
     void Awake()
     {
+        FillColorLists();
         Theme1();
+        Theme2();
     }
 
     void Update()
@@ -28,7 +32,25 @@ public class ColorThemeManager : MonoBehaviour
             Theme2();
         }
     }
-
+    public void FillColorLists()
+    {
+        foreach(Image i in canvas.GetComponentsInChildren<Image>())
+        {
+            if(i.CompareTag("PrimaryColor"))
+            {
+                baseColorObjects.Add(i);
+            }
+            else if(i.CompareTag("SecondaryColor"))
+            {
+                secondaryColorObjects.Add(i);
+            }
+            
+        }
+        foreach(TMP_Text t in canvas.GetComponentsInChildren<TMP_Text>())
+        {
+           textColorObjects.Add(t);
+        }
+    }
     void Theme1()
     {
         foreach(Image obj1 in baseColorObjects)
