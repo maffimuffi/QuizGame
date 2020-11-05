@@ -42,7 +42,7 @@ public class ColorThemeManager : MonoBehaviour
         {
             obj2.GetComponent<Image>().color = new Color(0, 57, 75);
         }
-        foreach (GameObject obj in baseColorObjects)
+        foreach (GameObject obj in textColorObjects)
         {
             obj.GetComponent<Image>().color = new Color(255, 0, 0);
         }
