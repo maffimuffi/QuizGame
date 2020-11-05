@@ -19,7 +19,14 @@ public class ColorThemeManager : MonoBehaviour
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Theme1();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Theme2();
+        }
     }
 
     void Theme1()
@@ -31,6 +38,22 @@ public class ColorThemeManager : MonoBehaviour
         foreach (Image obj2 in secondaryColorObjects)
         {
             obj2.color = new Color32(0, 57, 75, 255);
+        }
+        foreach (TMP_Text obj3 in textColorObjects)
+        {
+            obj3.color = new Color32(255, 255, 255, 255);
+        }
+    }
+
+    void Theme2()
+    {
+        foreach (Image obj1 in baseColorObjects)
+        {
+            obj1.color = new Color32(0, 43, 33, 255);
+        }
+        foreach (Image obj2 in secondaryColorObjects)
+        {
+            obj2.color = new Color32(0, 75, 57, 255);
         }
         foreach (TMP_Text obj3 in textColorObjects)
         {
