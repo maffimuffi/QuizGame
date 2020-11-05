@@ -56,8 +56,8 @@ public class GameManager : MonoBehaviour
         dbHandler = gameObject.GetComponent<DatabaseHandler>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
-      
-        }
+        FetchAndMix();
+    }
 
     // Update is called once per frame
     void Update()
@@ -71,8 +71,6 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        dbHandler.FetchQuestion();
-        qmanager.ChangeAnswerPositions();
         mainMenu.mainmenuScreen.SetActive(false);
         mainMenu.gameScreen.SetActive(true);
         level = 1;
@@ -92,10 +90,15 @@ public class GameManager : MonoBehaviour
         //question.Initialize();
     }
 
-    public void NewRound()
+    public void FetchAndMix()
     {
         dbHandler.FetchQuestion();
         qmanager.ChangeAnswerPositions();
+    }
+
+
+    public void NewRound()
+    {
         roundEndScreen.SetActive(false);
         correctAnswers = 0;
         questionNumber = 1;
@@ -118,8 +121,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            dbHandler.FetchQuestion();
-            qmanager.ChangeAnswerPositions();
+            
             infoScreen.SetActive(false);
             answering = true;
             timeLeft = 60f;
