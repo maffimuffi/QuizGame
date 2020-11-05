@@ -67,11 +67,7 @@ public class GameManager : MonoBehaviour
         question = GetComponent<Question>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
-<<<<<<< HEAD
       
-=======
-        FetchAndMix();
->>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
     }
 
     // Update is called once per frame
@@ -101,22 +97,15 @@ public class GameManager : MonoBehaviour
         continuedToNextRound = false;
         gameState = 1;
         SavePlayer();
-<<<<<<< HEAD
         databaseManager.FetchQuestion();
         question.Initialize();
         //qmanager.ChangeAnswerPositions();
         //dbHandler.FetchQuestion();
-=======
         //databaseManager.FetchQuestion();
         //question.Initialize();
     }
 
-    public void FetchAndMix()
-    {
-        dbHandler.FetchQuestion();
-        qmanager.ChangeAnswerPositions();
->>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
-    }
+    
 
 
     public void NewRound()
@@ -129,13 +118,9 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 1;
         continuedToNextRound = false;
-<<<<<<< HEAD
         databaseManager.FetchQuestion();
         //dbHandler.FetchQuestion();
         //qmanager.ChangeAnswerPositions();
-=======
-        //databaseManager.FetchQuestion();
->>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
     }
 
     public void NextQuestion()
@@ -153,16 +138,10 @@ public class GameManager : MonoBehaviour
             infoScreen.SetActive(false);
             answering = true;
             timeLeft = 60f;
-<<<<<<< HEAD
-            infoScreen.SetActive(false);
-            gameState = 2;
+            gameState = 1;
             databaseManager.FetchQuestion();
             //dbHandler.FetchQuestion();
             //qmanager.ChangeAnswerPositions();
-=======
-            gameState = 1;
-            //databaseManager.FetchQuestion();
->>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
         }
     }
 
