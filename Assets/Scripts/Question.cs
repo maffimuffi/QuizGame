@@ -23,12 +23,6 @@ public class Question : MonoBehaviour
     public List <Button> AnswerButtons = new List<Button>();
     public List<int> UsedQuestions = new List<int>();
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void Initialize()
     {
         Debug.Log("Initialized Question");
@@ -36,25 +30,6 @@ public class Question : MonoBehaviour
         AnswerBText = AnswerBButton.GetComponentInChildren<TMP_Text>();
         AnswerCText = AnswerCButton.GetComponentInChildren<TMP_Text>();
         AnswerDText = AnswerDButton.GetComponentInChildren<TMP_Text>();
-        for(int i = 1;i<answerSize;i++)
-        {
-            AnswerButtons[i].onClick.AddListener(() => WrongAnswer());
-        }
-        AnswerAButton.onClick.AddListener (()=> CorrectAnswer());
-    }
-    public void WrongAnswer()
-    {
-        //Debug.Log("Väärin");
-        //FindObjectOfType<Timer>().ResetTimer();
-        //RandomQuestion();
-        
-        
-    }
-    public void CorrectAnswer()
-    {
-       //Debug.Log("Oikein");
-        //FindObjectOfType<Timer>().ResetTimer();
-        //RandomQuestion();
     }
     public void Parse(string text)
     {
@@ -81,10 +56,7 @@ public class Question : MonoBehaviour
                     else
                     {
                         Debug.Log("Question has been used");
-                    }
-                   
-                    
-                   
+                    }                                                     
                 }
                 //Debug.Log(int.Parse(tempString));
                 tempString = "";
@@ -177,41 +149,10 @@ public class Question : MonoBehaviour
             
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ShuffleButtons();
-        }
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            RandomQuestion();
-        }
-    }
-    // remove listeners from buttons
-    public void ClearButtonListeners()
-    {
-        AnswerAButton.onClick.RemoveAllListeners();
-        AnswerBButton.onClick.RemoveAllListeners();
-        AnswerCButton.onClick.RemoveAllListeners();
-        AnswerDButton.onClick.RemoveAllListeners();
-    }
-    
-    public void NewQuestion()
-    {
-       
-
-    }
-    public void RandomizeOrder()
-    {
-
-    }
 }
 [System.Serializable]
 public class QuestionList
 {
     public List<string> optionsList = new List<string>();
     public int id;
-
 }
