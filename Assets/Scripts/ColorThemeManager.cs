@@ -17,8 +17,8 @@ public class ColorThemeManager : MonoBehaviour
     void Awake()
     {
         FillColorLists();
-        Theme1();
-        Theme2();
+        //Theme1();
+        //Theme2();
     }
 
     void Update()
