@@ -1176,31 +1176,6 @@ MonoBehaviour:
   currentQuestion: {fileID: 244627263}
   SQLsearch: Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
     FROM kysymykset
-  baseColorObjects:
-  - {fileID: 1681029902}
-  - {fileID: 1307305878}
-  - {fileID: 2129121088}
-  - {fileID: 396693986}
-  - {fileID: 905693268}
-  secondaryColorObjects:
-  - {fileID: 1442516740}
-  - {fileID: 1057508505}
-  - {fileID: 224610129}
-  - {fileID: 360291865}
-  - {fileID: 2010638691}
-  textColorObjects:
-  - {fileID: 448164865}
-  - {fileID: 1139960922}
-  - {fileID: 240810935}
-  - {fileID: 1869237345}
-  - {fileID: 319433199}
-  - {fileID: 349671668}
-  - {fileID: 2017838669}
-  - {fileID: 214433194}
-  - {fileID: 637121406}
-  - {fileID: 505026851}
-  - {fileID: 602858442}
-  - {fileID: 1769412341}
 --- !u!1 &247562497
 GameObject:
   m_ObjectHideFlags: 0
