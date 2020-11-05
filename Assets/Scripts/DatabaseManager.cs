@@ -12,7 +12,7 @@ public class DatabaseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        currentQuestion = GetComponent<Question>();
         //StartCoroutine(GetQuestion());
         
     }

@@ -44,7 +44,7 @@ public class Question : MonoBehaviour
     }
     public void WrongAnswer()
     {
-        Debug.Log("Väärin");
+        //Debug.Log("Väärin");
         //FindObjectOfType<Timer>().ResetTimer();
         //RandomQuestion();
         
@@ -52,7 +52,7 @@ public class Question : MonoBehaviour
     }
     public void CorrectAnswer()
     {
-        Debug.Log("Oikein");
+       //Debug.Log("Oikein");
         //FindObjectOfType<Timer>().ResetTimer();
         //RandomQuestion();
     }

@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     // Integers
     [HideInInspector] public int level;
     [HideInInspector] public int repeatRound = 0;
@@ -43,21 +44,31 @@ public class GameManager : MonoBehaviour
 
     //Scripts
     public MainMenu mainMenu;
-    public QuestionManager qmanager;
+    //public QuestionManager qmanager;
     public SettingsMenu settingsMenu;
-    public DatabaseHandler dbHandler;
-    //public DatabaseManager databaseManager;
-    //public Question question;
+    //public DatabaseHandler dbHandler;
+    public DatabaseManager databaseManager;
+    public Question question;
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if(instance != this)
+        {
+            Destroy(this);
+        }
         gameState = 0;
-        qmanager = gameObject.GetComponent<QuestionManager>();
-        dbHandler = gameObject.GetComponent<DatabaseHandler>();
+        //qmanager = gameObject.GetComponent<QuestionManager>();
+        //dbHandler = gameObject.GetComponent<DatabaseHandler>();
+        databaseManager = GetComponent<DatabaseManager>();
+        question = GetComponent<Question>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
       
-        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -84,10 +95,10 @@ public class GameManager : MonoBehaviour
         continuedToNextRound = false;
         gameState = 2;
         SavePlayer();
-        //databaseManager.FetchQuestion();
-        //question.Initialize();
-        qmanager.ChangeAnswerPositions();
-        dbHandler.FetchQuestion();
+        databaseManager.FetchQuestion();
+        question.Initialize();
+        //qmanager.ChangeAnswerPositions();
+        //dbHandler.FetchQuestion();
     }
 
     public void NewRound()
@@ -100,9 +111,9 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 2;
         continuedToNextRound = false;
-        //databaseManager.FetchQuestion();
-        dbHandler.FetchQuestion();
-        qmanager.ChangeAnswerPositions();
+        databaseManager.FetchQuestion();
+        //dbHandler.FetchQuestion();
+        //qmanager.ChangeAnswerPositions();
     }
 
     public void NextQuestion()
@@ -120,9 +131,9 @@ public class GameManager : MonoBehaviour
             timeLeft = 60f;
             infoScreen.SetActive(false);
             gameState = 2;
-            //databaseManager.FetchQuestion();
-            dbHandler.FetchQuestion();
-            qmanager.ChangeAnswerPositions();
+            databaseManager.FetchQuestion();
+            //dbHandler.FetchQuestion();
+            //qmanager.ChangeAnswerPositions();
         }
     }
 
