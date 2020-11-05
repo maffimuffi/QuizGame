@@ -67,7 +67,11 @@ public class GameManager : MonoBehaviour
         question = GetComponent<Question>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
+<<<<<<< HEAD
       
+=======
+        FetchAndMix();
+>>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
     }
 
     // Update is called once per frame
@@ -82,6 +86,8 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        mainMenu.mainmenuScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(true);
         level = 1;
         correctAnswers = 0;
         combinedCorrectAnswers = 0;
@@ -93,13 +99,25 @@ public class GameManager : MonoBehaviour
         highestRound = 1;
         answering = true;
         continuedToNextRound = false;
-        gameState = 2;
+        gameState = 1;
         SavePlayer();
+<<<<<<< HEAD
         databaseManager.FetchQuestion();
         question.Initialize();
         //qmanager.ChangeAnswerPositions();
         //dbHandler.FetchQuestion();
+=======
+        //databaseManager.FetchQuestion();
+        //question.Initialize();
     }
+
+    public void FetchAndMix()
+    {
+        dbHandler.FetchQuestion();
+        qmanager.ChangeAnswerPositions();
+>>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
+    }
+
 
     public void NewRound()
     {
@@ -109,11 +127,15 @@ public class GameManager : MonoBehaviour
         roundScore = 0;
         timeLeft = 60f;
         answering = true;
-        gameState = 2;
+        gameState = 1;
         continuedToNextRound = false;
+<<<<<<< HEAD
         databaseManager.FetchQuestion();
         //dbHandler.FetchQuestion();
         //qmanager.ChangeAnswerPositions();
+=======
+        //databaseManager.FetchQuestion();
+>>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
     }
 
     public void NextQuestion()
@@ -123,17 +145,24 @@ public class GameManager : MonoBehaviour
         {
             questionNumber = 10;
             infoScreen.SetActive(false);
-            gameState = 4;
+            gameState = 3;
         }
         else
         {
+            
+            infoScreen.SetActive(false);
             answering = true;
             timeLeft = 60f;
+<<<<<<< HEAD
             infoScreen.SetActive(false);
             gameState = 2;
             databaseManager.FetchQuestion();
             //dbHandler.FetchQuestion();
             //qmanager.ChangeAnswerPositions();
+=======
+            gameState = 1;
+            //databaseManager.FetchQuestion();
+>>>>>>> b3e39b4a6e30d0c41d16e2ae65c8788019d81ca4
         }
     }
 
@@ -204,27 +233,26 @@ public class GameManager : MonoBehaviour
         PlayerData data = SaveSystem.LoadGame();
 
         level = data.level;
+        repeatRound = data.repeatRound;
         correctAnswers = data.correctAnswers;
+        wrongAnswers = data.wrongAnswers;
+        combinedCorrectAnswers = data.combinedCorrectAnswers;
+        questionNumber = data.questionNumber;
         score = data.score;
         highscore = data.highscore;
         gameState = data.gameState;
+        roundScore = data.roundScore;
+        highestRound = data.highestRound;
         timeLeft = data.timeLeft;
         answering = data.answering;
         playerAnswer = data.playerAnswer;
+        continuedToNextRound = data.continuedToNextRound;
     }
 
     // Checks what state the game is currently in
     void CheckGameState()
     {
-        if (gameState == 0)
-        {
-            // Game is not on and the game is in the main menu
-        }
         if (gameState == 1)
-        {
-            StartNewGame();
-        }
-        if (gameState == 2)
         {
             // Player is answering a question
             if (answering)
@@ -239,17 +267,17 @@ public class GameManager : MonoBehaviour
             // Must check if the player has answered
             if (!answering)
             {
-                gameState = 3;
+                gameState = 2;
             }
             // If timer goes down to 0, player failed
             if (timeLeft <= 0 && answering)
             {
                 timeLeft = 0f;
                 playerAnswer = false;
-                gameState = 3;
+                gameState = 2;
             }
         }
-        if (gameState == 3)
+        if (gameState == 2)
         {
             // Player answered a question
             if (playerAnswer == true)
@@ -264,7 +292,7 @@ public class GameManager : MonoBehaviour
                 questionInfoText.text = "Väärin!";
             }
         }
-        if (gameState == 4)
+        if (gameState == 3)
         {
             // Level has ended
 
@@ -293,7 +321,7 @@ public class GameManager : MonoBehaviour
                 {
                     score -= 1 * repeatRound * level;
                     level = 10;
-                    gameState = 5;
+                    gameState = 4;
                 }
             }
             // Player stays in the current level
@@ -332,7 +360,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (gameState == 5)
+        if (gameState == 4)
         {
             // Game has ended, open game ending screen
             roundEndScreen.SetActive(false);
