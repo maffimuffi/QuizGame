@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
+
+    public ColorThemeManager colorManager;
+
+    public TMP_Text themeText;
 
     public GameObject settingsScreen;
     public GameObject mainmenuScreen;
@@ -14,6 +19,31 @@ public class SettingsMenu : MonoBehaviour
 
     public bool musicOn;
     public bool soundOn;
+
+    void Awake()
+    {
+        if (musicOn)
+        {
+            musicButton.image.color = new Color32(108, 255, 150, 255);
+        }
+        else if (!musicOn)
+        {
+            musicButton.image.color = new Color32(255, 107, 107, 255);
+        }
+        if (soundOn)
+        {
+            soundButton.image.color = new Color32(108, 255, 150, 255);
+        }
+        else if (!soundOn)
+        {
+            soundButton.image.color = new Color32(255, 107, 107, 255);
+        }
+    }
+
+    void Update()
+    {
+        themeText.text = "Teema: " + colorManager.themeIndex;
+    }
 
     public void MusicButton()
     {
@@ -51,23 +81,35 @@ public class SettingsMenu : MonoBehaviour
         mainmenuScreen.SetActive(true);
     }
 
-    void Awake()
+    public void NextTheme()
     {
-        if(musicOn)
+        if(colorManager.themeIndex == (colorManager.themes.Count - 1))
         {
-            musicButton.image.color = Color.green;
+            colorManager.themeIndex = 0;
+            colorManager.currentTheme = colorManager.themes[colorManager.themeIndex];
+            colorManager.SetTheme();
         }
-        else if(!musicOn)
+        else
         {
-            musicButton.image.color = Color.red;
+            colorManager.themeIndex++;
+            colorManager.currentTheme = colorManager.themes[colorManager.themeIndex];
+            colorManager.SetTheme();
         }
-        if (soundOn)
+    }
+
+    public void PreviousTheme()
+    {
+        if (colorManager.themeIndex == 0)
         {
-            soundButton.image.color = Color.green;
+            colorManager.themeIndex = (colorManager.themes.Count - 1);
+            colorManager.currentTheme = colorManager.themes[colorManager.themeIndex];
+            colorManager.SetTheme();
         }
-        else if (!soundOn)
+        else
         {
-            soundButton.image.color = Color.red;
+            colorManager.themeIndex--;
+            colorManager.currentTheme = colorManager.themes[colorManager.themeIndex];
+            colorManager.SetTheme();
         }
     }
 }

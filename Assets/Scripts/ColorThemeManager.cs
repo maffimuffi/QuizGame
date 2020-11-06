@@ -14,6 +14,8 @@ public class ColorThemeManager : MonoBehaviour
     public Theme currentTheme;
     public Canvas canvas;
 
+    public int themeIndex = 0;
+
 
     // musicButton.image.color = Color.red;
     void Awake()
@@ -29,31 +31,35 @@ public class ColorThemeManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            
-            currentTheme = themes[0];
+            themeIndex = 0;
+            currentTheme = themes[themeIndex];
             SetTheme();
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            currentTheme = themes[1];
+            themeIndex = 1;
+            currentTheme = themes[themeIndex];
             SetTheme();
             
         }
         if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            currentTheme = themes[2];
+            themeIndex = 2;
+            currentTheme = themes[themeIndex];
             SetTheme();
             
         }
         if(Input.GetKeyDown(KeyCode.Alpha4))
         {
-            currentTheme = themes[3];
+            themeIndex = 3;
+            currentTheme = themes[themeIndex];
             SetTheme();
             
         }
          if(Input.GetKeyDown(KeyCode.Alpha5))
         {
-            currentTheme = themes[4];
+            themeIndex = 4;
+            currentTheme = themes[themeIndex];
             SetTheme();
             
         }
