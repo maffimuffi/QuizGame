@@ -45,6 +45,18 @@ public class ColorThemeManager : MonoBehaviour
             SetTheme();
             
         }
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            currentTheme = themes[3];
+            SetTheme();
+            
+        }
+         if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            currentTheme = themes[4];
+            SetTheme();
+            
+        }
     }
     public void FillColorLists()
     {
@@ -86,6 +98,8 @@ public class ColorThemeManager : MonoBehaviour
         themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255)));
         themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255),new Color32(255, 255, 255, 255)));
         themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(224, 182, 13, 255),new Color32(255, 255, 255, 255)));
+        themes.Add(new Theme(new Color32(97, 37, 25, 255),new Color32(97, 61, 54, 255),new Color32(255, 255, 255, 255)));
+        themes.Add(new Theme(new Color32(92, 35, 97, 255),new Color32(212, 81, 224, 255),new Color32(255, 255, 255, 255)));
     }
 
    
