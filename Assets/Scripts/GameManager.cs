@@ -44,9 +44,7 @@ public class GameManager : MonoBehaviour
 
     //Scripts
     public MainMenu mainMenu;
-    //public QuestionManager qmanager;
     public SettingsMenu settingsMenu;
-    //public DatabaseHandler dbHandler;
     public DatabaseManager databaseManager;
     public Question question;
     public ColorThemeManager colorThemeManager;
@@ -62,11 +60,12 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         gameState = 0;
-        //qmanager = gameObject.GetComponent<QuestionManager>();
-        //dbHandler = gameObject.GetComponent<DatabaseHandler>();
         databaseManager = GetComponent<DatabaseManager>();
         question = GetComponent<Question>();
         colorThemeManager = GetComponent<ColorThemeManager>();
+        colorThemeManager.SetTheme();
+        mainMenu.settingsScreen.SetActive(false);
+        mainMenu.gameScreen.SetActive(false);
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
       
@@ -102,10 +101,6 @@ public class GameManager : MonoBehaviour
         databaseManager.FetchQuestion();
         colorThemeManager.SetTheme();
         question.Initialize();
-        //qmanager.ChangeAnswerPositions();
-        //dbHandler.FetchQuestion();
-        //databaseManager.FetchQuestion();
-        //question.Initialize();
     }
 
     
@@ -123,8 +118,6 @@ public class GameManager : MonoBehaviour
         continuedToNextRound = false;
         databaseManager.FetchQuestion();
         colorThemeManager.SetTheme();
-        //dbHandler.FetchQuestion();
-        //qmanager.ChangeAnswerPositions();
     }
 
     public void NextQuestion()
@@ -145,8 +138,6 @@ public class GameManager : MonoBehaviour
             gameState = 1;
             databaseManager.FetchQuestion();
             colorThemeManager.SetTheme();
-            //dbHandler.FetchQuestion();
-            //qmanager.ChangeAnswerPositions();
         }
     }
 
