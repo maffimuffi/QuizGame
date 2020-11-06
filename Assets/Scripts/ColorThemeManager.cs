@@ -10,14 +10,18 @@ public class ColorThemeManager : MonoBehaviour
     [SerializeField] private List<Image> baseColorObjects = new List<Image>();
     [SerializeField] private List<Image> secondaryColorObjects= new List<Image>();
     [SerializeField] private List<TMP_Text> textColorObjects = new List<TMP_Text>();
-
+    public List<Theme> themes = new List<Theme>();
+    public Theme currentTheme;
     public Canvas canvas;
+
 
     // musicButton.image.color = Color.red;
     void Awake()
     {
         FillColorLists();
-        //Theme1();
+        currentTheme = themes[0];
+        SetTheme();
+        Theme1();
         //Theme2();
     }
 
@@ -25,11 +29,15 @@ public class ColorThemeManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Theme1();
+            
+            currentTheme = themes[0];
+            SetTheme();
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Theme2();
+            currentTheme = themes[1];
+            SetTheme();
+            
         }
     }
     public void FillColorLists()
@@ -51,35 +59,41 @@ public class ColorThemeManager : MonoBehaviour
            textColorObjects.Add(t);
         }
     }
-    void Theme1()
+    public void SetTheme()
     {
+        FillColorLists();
         foreach(Image obj1 in baseColorObjects)
         {
-            obj1.color = new Color32(0, 33, 43, 255);
+            obj1.color = currentTheme.baseColor;
         }
         foreach (Image obj2 in secondaryColorObjects)
         {
-            obj2.color = new Color32(0, 57, 75, 255);
+            obj2.color = currentTheme.secondaryColor;
         }
         foreach (TMP_Text obj3 in textColorObjects)
         {
-            obj3.color = new Color32(255, 255, 255, 255);
+            obj3.color = currentTheme.textColor;
         }
+    }
+    void Theme1()
+    {
+        themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255)));
+        themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255),new Color32(255, 255, 255, 255)));
     }
 
-    void Theme2()
+   
+}
+[System.Serializable]
+public class Theme
+{
+
+    public Theme(Color primary,Color secondary,Color text)
     {
-        foreach (Image obj1 in baseColorObjects)
-        {
-            obj1.color = new Color32(0, 43, 33, 255);
-        }
-        foreach (Image obj2 in secondaryColorObjects)
-        {
-            obj2.color = new Color32(0, 75, 57, 255);
-        }
-        foreach (TMP_Text obj3 in textColorObjects)
-        {
-            obj3.color = new Color32(255, 255, 255, 255);
-        }
+        baseColor = primary;
+        secondaryColor = secondary;
+        textColor = text;
     }
+    public Color baseColor;
+    public Color secondaryColor;
+    public Color textColor;
 }

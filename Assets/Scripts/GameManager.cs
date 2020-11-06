@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     //public DatabaseHandler dbHandler;
     public DatabaseManager databaseManager;
     public Question question;
+    public ColorThemeManager colorThemeManager;
 
     private void Awake()
     {
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         //dbHandler = gameObject.GetComponent<DatabaseHandler>();
         databaseManager = GetComponent<DatabaseManager>();
         question = GetComponent<Question>();
+        colorThemeManager = GetComponent<ColorThemeManager>();
         settingsMenu.musicOn = true;
         settingsMenu.soundOn = true;
       
@@ -98,6 +100,7 @@ public class GameManager : MonoBehaviour
         gameState = 1;
         SavePlayer();
         databaseManager.FetchQuestion();
+        colorThemeManager.SetTheme();
         question.Initialize();
         //qmanager.ChangeAnswerPositions();
         //dbHandler.FetchQuestion();
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour
         gameState = 1;
         continuedToNextRound = false;
         databaseManager.FetchQuestion();
+        colorThemeManager.SetTheme();
         //dbHandler.FetchQuestion();
         //qmanager.ChangeAnswerPositions();
     }
@@ -140,6 +144,7 @@ public class GameManager : MonoBehaviour
             timeLeft = 60f;
             gameState = 1;
             databaseManager.FetchQuestion();
+            colorThemeManager.SetTheme();
             //dbHandler.FetchQuestion();
             //qmanager.ChangeAnswerPositions();
         }
@@ -147,6 +152,7 @@ public class GameManager : MonoBehaviour
 
     public void ContinueToNextRound()
     {
+        
         continuedToNextRound = true;
         roundEndScreen.SetActive(false);
     }
@@ -258,6 +264,7 @@ public class GameManager : MonoBehaviour
         }
         if (gameState == 2)
         {
+            colorThemeManager.SetTheme();
             // Player answered a question
             if (playerAnswer == true)
             {
@@ -274,7 +281,7 @@ public class GameManager : MonoBehaviour
         if (gameState == 3)
         {
             // Level has ended
-
+            colorThemeManager.SetTheme();
             roundEndScreen.SetActive(true);
             // Player gets promoted to the next level!
             if (correctAnswers >= 8)
@@ -341,6 +348,7 @@ public class GameManager : MonoBehaviour
 
         if (gameState == 4)
         {
+            colorThemeManager.SetTheme();
             // Game has ended, open game ending screen
             roundEndScreen.SetActive(false);
             gameEndScreen.SetActive(true);

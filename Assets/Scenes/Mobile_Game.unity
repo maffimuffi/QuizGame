@@ -1092,6 +1092,11 @@ MonoBehaviour:
   baseColorObjects: []
   secondaryColorObjects: []
   textColorObjects: []
+  themes: []
+  currentTheme:
+    baseColor: {r: 0.9369499, g: 0, b: 0.9528302, a: 1}
+    secondaryColor: {r: 0.9716981, g: 0, b: 0, a: 1}
+    textColor: {r: 0, g: 0, b: 0, a: 1}
   canvas: {fileID: 1818770456}
 --- !u!114 &244627261
 MonoBehaviour:
