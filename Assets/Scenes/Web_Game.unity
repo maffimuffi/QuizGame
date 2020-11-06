@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 180222196}
   m_Layer: 5
   m_Name: ExitButton
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 224610131}
   m_Layer: 5
   m_Name: InfoImage
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1031,6 +1031,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 705419515}
   databaseManager: {fileID: 244627259}
   question: {fileID: 244627260}
+  colorThemeManager: {fileID: 0}
 --- !u!4 &244627262
 Transform:
   m_ObjectHideFlags: 0
@@ -1060,6 +1061,12 @@ MonoBehaviour:
   baseColorObjects: []
   secondaryColorObjects: []
   textColorObjects: []
+  themes: []
+  currentTheme:
+    baseColor: {r: 0, g: 0, b: 0, a: 0}
+    secondaryColor: {r: 0, g: 0, b: 0, a: 0}
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+  canvas: {fileID: 1818770456}
 --- !u!1 &247562497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1081,7 @@ GameObject:
   - component: {fileID: 247562499}
   m_Layer: 5
   m_Name: ContinueButton
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1206,7 +1213,7 @@ GameObject:
   - component: {fileID: 263062173}
   m_Layer: 5
   m_Name: NextRoundButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1606,7 +1613,7 @@ GameObject:
   - component: {fileID: 360291864}
   m_Layer: 5
   m_Name: RoundEndImage
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1704,7 +1711,7 @@ GameObject:
   - component: {fileID: 396693985}
   m_Layer: 5
   m_Name: WrongButton2
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1724,10 +1731,10 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 70, y: -510}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &396693985
 MonoBehaviour:
@@ -2115,7 +2122,7 @@ GameObject:
   - component: {fileID: 505901829}
   m_Layer: 5
   m_Name: Timer
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3179,7 +3186,7 @@ GameObject:
   - component: {fileID: 905693267}
   m_Layer: 5
   m_Name: WrongButton3
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3199,10 +3206,10 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 950, y: -510}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &905693267
 MonoBehaviour:
@@ -3540,7 +3547,7 @@ GameObject:
   - component: {fileID: 1057508507}
   m_Layer: 5
   m_Name: AnswersBox
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3778,7 +3785,7 @@ GameObject:
   - component: {fileID: 1075809206}
   m_Layer: 5
   m_Name: ExitButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4721,7 +4728,7 @@ GameObject:
   - component: {fileID: 1307305877}
   m_Layer: 5
   m_Name: CorrectButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4741,10 +4748,10 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 70, y: -250}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1307305877
 MonoBehaviour:
@@ -4900,7 +4907,7 @@ GameObject:
   - component: {fileID: 1442516740}
   m_Layer: 5
   m_Name: QuestionBox
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4979,7 +4986,7 @@ GameObject:
   - component: {fileID: 1442859334}
   m_Layer: 5
   m_Name: SettingsButton
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5136,7 +5143,7 @@ GameObject:
   - component: {fileID: 1447921057}
   m_Layer: 5
   m_Name: NextQuestionButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5268,7 +5275,7 @@ GameObject:
   - component: {fileID: 1516600201}
   m_Layer: 5
   m_Name: ExitButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5765,7 +5772,7 @@ GameObject:
   - component: {fileID: 1602716576}
   m_Layer: 5
   m_Name: NewGameButton
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6091,7 +6098,7 @@ GameObject:
   - component: {fileID: 1681029902}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6803,7 +6810,7 @@ GameObject:
   - component: {fileID: 2010638690}
   m_Layer: 5
   m_Name: GameEndImage
-  m_TagString: Untagged
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7037,7 +7044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2056686062
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7108,7 +7115,7 @@ GameObject:
   - component: {fileID: 2120510491}
   m_Layer: 5
   m_Name: GameEndButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7240,7 +7247,7 @@ GameObject:
   - component: {fileID: 2129121087}
   m_Layer: 5
   m_Name: WrongButton1
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7365,8 +7372,8 @@ RectTransform:
   m_Father: {fileID: 1057508504}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 950, y: -250}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}

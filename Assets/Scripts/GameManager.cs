@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
         infoScreen.SetActive(true);
         gameEndScreen.SetActive(true);
         roundEndScreen.SetActive(true);
+        colorThemeManager.FillColorLists();
         colorThemeManager.SetTheme();
         infoScreen.SetActive(false);
         gameEndScreen.SetActive(false);
