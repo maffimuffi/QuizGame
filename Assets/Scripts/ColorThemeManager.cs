@@ -79,7 +79,7 @@ public class ColorThemeManager : MonoBehaviour
     }
     public void SetTheme()
     {
-        FillColorLists();
+        
         foreach(Image obj1 in baseColorObjects)
         {
             obj1.color = currentTheme.baseColor;

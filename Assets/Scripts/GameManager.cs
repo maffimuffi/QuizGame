@@ -85,6 +85,13 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.mainmenuScreen.SetActive(false);
         mainMenu.gameScreen.SetActive(true);
+        infoScreen.SetActive(true);
+        gameEndScreen.SetActive(true);
+        roundEndScreen.SetActive(true);
+        colorThemeManager.SetTheme();
+        infoScreen.SetActive(false);
+        gameEndScreen.SetActive(false);
+        roundEndScreen.SetActive(false);
         level = 1;
         correctAnswers = 0;
         combinedCorrectAnswers = 0;
@@ -99,7 +106,7 @@ public class GameManager : MonoBehaviour
         gameState = 1;
         SavePlayer();
         databaseManager.FetchQuestion();
-        colorThemeManager.SetTheme();
+        
         question.Initialize();
     }
 
@@ -137,7 +144,7 @@ public class GameManager : MonoBehaviour
             timeLeft = 60f;
             gameState = 1;
             databaseManager.FetchQuestion();
-            colorThemeManager.SetTheme();
+            
         }
     }
 
@@ -255,7 +262,7 @@ public class GameManager : MonoBehaviour
         }
         if (gameState == 2)
         {
-            colorThemeManager.SetTheme();
+            
             // Player answered a question
             if (playerAnswer == true)
             {
@@ -272,7 +279,7 @@ public class GameManager : MonoBehaviour
         if (gameState == 3)
         {
             // Level has ended
-            colorThemeManager.SetTheme();
+            
             roundEndScreen.SetActive(true);
             // Player gets promoted to the next level!
             if (correctAnswers >= 8)
@@ -339,7 +346,7 @@ public class GameManager : MonoBehaviour
 
         if (gameState == 4)
         {
-            colorThemeManager.SetTheme();
+            
             // Game has ended, open game ending screen
             roundEndScreen.SetActive(false);
             gameEndScreen.SetActive(true);
