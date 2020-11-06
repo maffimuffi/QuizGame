@@ -19,9 +19,9 @@ public class ColorThemeManager : MonoBehaviour
     void Awake()
     {
         FillColorLists();
+        Theme1();
         currentTheme = themes[0];
         SetTheme();
-        Theme1();
         //Theme2();
     }
 
@@ -36,6 +36,12 @@ public class ColorThemeManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentTheme = themes[1];
+            SetTheme();
+            
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentTheme = themes[2];
             SetTheme();
             
         }
@@ -79,6 +85,7 @@ public class ColorThemeManager : MonoBehaviour
     {
         themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255)));
         themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255),new Color32(255, 255, 255, 255)));
+        themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(224, 182, 13, 255),new Color32(255, 255, 255, 255)));
     }
 
    
