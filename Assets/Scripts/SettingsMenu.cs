@@ -22,6 +22,8 @@ public class SettingsMenu : MonoBehaviour
 
     void Awake()
     {
+        themeText = gameObject.transform.Find("ThemeText").GetComponent<TMP_Text>();
+
         if (musicOn)
         {
             musicButton.image.color = new Color32(108, 255, 150, 255);

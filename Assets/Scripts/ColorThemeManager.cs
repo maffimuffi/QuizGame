@@ -61,6 +61,20 @@ public class ColorThemeManager : MonoBehaviour
             SetTheme();
             
         }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            themeIndex = 5;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            themeIndex = 6;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+
+        }
     }
     public void FillColorLists()
     {
@@ -102,11 +116,12 @@ public class ColorThemeManager : MonoBehaviour
     }
     void Theme1()
     {
-        themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255), "Teema 1"));
-        themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255), new Color32(255, 255, 255, 255), "Teema 2"));
-        themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(224, 182, 13, 255), new Color32(255, 255, 255, 255), "Teema 3"));
-        themes.Add(new Theme(new Color32(97, 37, 25, 255),new Color32(97, 61, 54, 255), new Color32(255, 255, 255, 255), "Teema 4"));
-        themes.Add(new Theme(new Color32(92, 35, 97, 255),new Color32(212, 81, 224, 255), new Color32(255, 255, 255, 255), "Teema 5"));
+        themes.Add(new Theme(new Color32(18, 10, 143, 255), new Color32(56, 114, 186, 255), new Color32(255, 255, 255, 255), "Ultramariini"));
+        themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255), "Tummansininen"));
+        themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255), new Color32(255, 255, 255, 255), "Vihreä"));
+        themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(224, 182, 13, 255), new Color32(255, 255, 255, 255), "Keltainen"));
+        themes.Add(new Theme(new Color32(97, 37, 25, 255),new Color32(97, 61, 54, 255), new Color32(255, 255, 255, 255), "Punainen"));
+        themes.Add(new Theme(new Color32(92, 35, 97, 255),new Color32(212, 81, 224, 255), new Color32(255, 255, 255, 255), "Pinkki"));
     }
 }
 [System.Serializable]
