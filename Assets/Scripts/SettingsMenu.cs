@@ -42,7 +42,8 @@ public class SettingsMenu : MonoBehaviour
 
     void Update()
     {
-        themeText.text = "Teema: " + colorManager.themeIndex;
+        themeText.text = colorManager.currentTheme.themeName;
+        
     }
 
     public void MusicButton()

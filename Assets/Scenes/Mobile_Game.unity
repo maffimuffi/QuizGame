@@ -1223,14 +1223,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75704db0c84705441b57699f2df2a3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColorObjects: []
-  secondaryColorObjects: []
-  textColorObjects: []
-  themes: []
+  themes:
+  - baseColor: {r: 0, g: 0, b: 0, a: 0}
+    secondaryColor: {r: 0, g: 0, b: 0, a: 0}
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    themeName: 
+  - baseColor: {r: 0, g: 0, b: 0, a: 0}
+    secondaryColor: {r: 0, g: 0, b: 0, a: 0}
+    textColor: {r: 0, g: 0, b: 0, a: 0}
+    themeName: 
   currentTheme:
     baseColor: {r: 0.9369499, g: 0, b: 0.9528302, a: 1}
     secondaryColor: {r: 0.9716981, g: 0, b: 0, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
+    themeName: 
   canvas: {fileID: 1818770456}
   themeIndex: 0
 --- !u!114 &244627261
@@ -3035,7 +3041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorManager: {fileID: 244627259}
-  themeText: {fileID: 0}
+  themeText: {fileID: 102827274}
   settingsScreen: {fileID: 705419513}
   mainmenuScreen: {fileID: 1566021160}
   musicButton: {fileID: 1249997251}
@@ -5421,7 +5427,7 @@ GameObject:
   - component: {fileID: 1406255215}
   m_Layer: 5
   m_Name: NextThemeButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5798,7 +5804,7 @@ GameObject:
   - component: {fileID: 1491984768}
   m_Layer: 5
   m_Name: PreviousThemeButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6062,7 +6068,7 @@ GameObject:
   - component: {fileID: 1556393623}
   m_Layer: 5
   m_Name: BackButton
-  m_TagString: Untagged
+  m_TagString: PrimaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

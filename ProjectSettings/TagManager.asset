@@ -10,6 +10,7 @@ TagManager:
   - WrongButton3
   - PrimaryColor
   - SecondaryColor
+  - ButtonColor
   layers:
   - Default
   - TransparentFX
