@@ -215,6 +215,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadPlayer()
     {
+        infoScreen.SetActive(false);
+        gameEndScreen.SetActive(false);
+        roundEndScreen.SetActive(false);
         PlayerData data = SaveSystem.LoadGame();
 
         level = data.level;

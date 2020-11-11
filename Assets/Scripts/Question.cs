@@ -87,7 +87,9 @@ public class Question : MonoBehaviour
         RandomQuestion();
     }
     public void RandomQuestion()
-    {   for(int j = 0;j<10;j++){
+    {   
+        tenQuestions.Clear();
+        for(int j = 0;j<10;j++){
             int randomInt = 0;
             finalStringList.Clear();
             stringList.Clear();
