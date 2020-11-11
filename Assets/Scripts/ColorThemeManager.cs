@@ -116,7 +116,7 @@ public class ColorThemeManager : MonoBehaviour
     }
     void Theme1()
     {
-        themes.Add(new Theme(new Color32(18, 10, 143, 255), new Color32(56, 114, 186, 255), new Color32(255, 255, 255, 255), "Ultramariini"));
+        themes.Add(new Theme(new Color32(18, 10, 92, 255), new Color32(56, 90, 186, 255), new Color32(255, 255, 255, 255), "Ultramariini"));
         themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255), "Tummansininen"));
         themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255), new Color32(255, 255, 255, 255), "Vihreä"));
         themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(224, 182, 13, 255), new Color32(255, 255, 255, 255), "Keltainen"));
