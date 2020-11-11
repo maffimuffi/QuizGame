@@ -2985,7 +2985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5d648731e24254b9ef88ce62f0cb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorManager: {fileID: 0}
+  colorManager: {fileID: 244627263}
   themeText: {fileID: 0}
   settingsScreen: {fileID: 705419513}
   mainmenuScreen: {fileID: 1566021160}
@@ -5497,7 +5497,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 705419515}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: NextTheme
+        m_MethodName: PreviousTheme
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
