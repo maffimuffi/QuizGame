@@ -97,7 +97,9 @@ public class Question : MonoBehaviour
             {
                 Debug.Log("No unused questions found, Clearing used QuestionsList");
                 UsedQuestions.Clear();
+                GetComponent<DatabaseManager>().FetchQuestion();
                 return;
+                
             }
             randomInt =UnityEngine.Random.Range(0,questionList.Count);
             
@@ -134,13 +136,22 @@ public class Question : MonoBehaviour
     }
     public void SetText()
     {
-        
+        if(tenQuestions[0]== null)
+        {
+            Debug.Log("No Questions Left");
+            UsedQuestions.Clear();
+            GetComponent<DatabaseManager>().FetchQuestion();
+            return;
+            
+        }
         QuestionText.text = tenQuestions[0].optionsList[0];
         AnswerAText.text =  tenQuestions[0].optionsList[1];
         AnswerBText.text =  tenQuestions[0].optionsList[2];
         AnswerCText.text =  tenQuestions[0].optionsList[3];
         AnswerDText.text =  tenQuestions[0].optionsList[4];
         tenQuestions.RemoveAt(0);
+        
+        
         ShuffleButtons();
     }
     public void ShuffleButtons()

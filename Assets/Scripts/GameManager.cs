@@ -235,6 +235,7 @@ public class GameManager : MonoBehaviour
         answering = data.answering;
         playerAnswer = data.playerAnswer;
         continuedToNextRound = data.continuedToNextRound;
+        question.tenQuestions = data.questionList;
     }
 
     // Checks what state the game is currently in

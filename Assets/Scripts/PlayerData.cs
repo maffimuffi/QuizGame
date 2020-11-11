@@ -23,6 +23,8 @@ public class PlayerData
     public bool answering;
     public bool playerAnswer;
     public bool continuedToNextRound;
+    
+    public List<QuestionList> questionList = new List<QuestionList>();
 
     public PlayerData(GameManager manager)
     {
@@ -43,6 +45,10 @@ public class PlayerData
         answering = manager.answering;
         playerAnswer = manager.playerAnswer;
         continuedToNextRound = manager.continuedToNextRound;
+        foreach(QuestionList q in manager.question.tenQuestions)
+        {
+            questionList.Add(q);
+        }
     }
 
 }
