@@ -27,6 +27,38 @@ public class ColorThemeManager : MonoBehaviour
 
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if(themeIndex == (themes.Count - 1))
+            {
+                themeIndex = 0;
+                currentTheme = themes[themeIndex];
+                SetTheme();
+            }
+            else
+            {
+                themeIndex++;
+                currentTheme = themes[themeIndex];
+                SetTheme();
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            if (themeIndex == 0)
+            {
+                themeIndex = (themes.Count - 1);
+                currentTheme = themes[themeIndex];
+                SetTheme();
+            }
+            else
+            {
+                themeIndex--;
+                currentTheme = themes[themeIndex];
+                SetTheme();
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             themeIndex = 0;

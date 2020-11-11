@@ -9,6 +9,11 @@ public class SettingsMenu : MonoBehaviour
 
     public ColorThemeManager colorManager;
 
+    public Sprite musicOnImage;
+    public Sprite musicOffImage;
+    public Sprite soundOnImage;
+    public Sprite soundOffImage;
+
     public TMP_Text themeText;
 
     public GameObject settingsScreen;
@@ -23,23 +28,8 @@ public class SettingsMenu : MonoBehaviour
     void Awake()
     {
         themeText = gameObject.transform.Find("ThemeText").GetComponent<TMP_Text>();
-
-        if (musicOn)
-        {
-            musicButton.image.color = new Color32(108, 255, 150, 255);
-        }
-        else if (!musicOn)
-        {
-            musicButton.image.color = new Color32(255, 107, 107, 255);
-        }
-        if (soundOn)
-        {
-            soundButton.image.color = new Color32(108, 255, 150, 255);
-        }
-        else if (!soundOn)
-        {
-            soundButton.image.color = new Color32(255, 107, 107, 255);
-        }
+        musicButton.image.sprite = musicOnImage;
+        soundButton.image.sprite = soundOnImage;
     }
 
     void Update()
@@ -54,13 +44,15 @@ public class SettingsMenu : MonoBehaviour
         {
             musicOn = false;
             AudioManager.Instance.StopSound("GameMusic");
-            musicButton.image.color = Color.red;
+            musicButton.image.sprite = musicOffImage;
+            //musicButton.image.color = Color.red;
         }
         else if(!musicOn)
         {
             musicOn = true;
             AudioManager.Instance.PlaySound("GameMusic");
-            musicButton.image.color = Color.green;
+            musicButton.image.sprite = musicOnImage;
+            //musicButton.image.color = Color.green;
         }
     }
 
@@ -69,12 +61,14 @@ public class SettingsMenu : MonoBehaviour
         if(soundOn)
         {
             soundOn = false;
-            soundButton.image.color = Color.red;
+            soundButton.image.sprite = soundOffImage;
+            //soundButton.image.color = Color.red;
         }
         else if(!soundOn)
         {
             soundOn = true;
-            soundButton.image.color = Color.green;
+            soundButton.image.sprite = soundOnImage;
+            //soundButton.image.color = Color.green;
         }
     }
 
