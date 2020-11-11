@@ -270,7 +270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &100905648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1343,8 +1343,8 @@ GameObject:
   - component: {fileID: 268795925}
   - component: {fileID: 268795924}
   m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
+  m_Name: Text (TMP)
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1747,7 +1747,7 @@ GameObject:
   - component: {fileID: 360291864}
   m_Layer: 5
   m_Name: RoundEndImage
-  m_TagString: PrimaryColor
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12941177, b: 0.16862746, a: 1}
+  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2110,7 +2110,7 @@ GameObject:
   - component: {fileID: 505026851}
   m_Layer: 5
   m_Name: InfoText
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2454,7 +2454,7 @@ GameObject:
   - component: {fileID: 602858442}
   m_Layer: 5
   m_Name: RoundEndText
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3016,7 +3016,7 @@ GameObject:
   - component: {fileID: 767303461}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3149,8 +3149,8 @@ GameObject:
   - component: {fileID: 835876381}
   - component: {fileID: 835876380}
   m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
+  m_Name: Text (TMP)
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3378,7 +3378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12941177, b: 0.16862746, a: 1}
+  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3616,7 +3616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.22352941, b: 0.29411766, a: 1}
+  m_Color: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3680,7 +3680,7 @@ GameObject:
   - component: {fileID: 1075278790}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3815,7 +3815,7 @@ GameObject:
   - component: {fileID: 1075809206}
   m_Layer: 5
   m_Name: ExitButton
-  m_TagString: PrimaryColor
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4716,7 +4716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12941177, b: 0.16862746, a: 1}
+  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5019,7 +5019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1406281454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5092,7 +5092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.22352941, b: 0.29411766, a: 1}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5871,7 +5871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1627640356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5942,7 +5942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12941177, b: 0.16862746, a: 1}
+  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5980,7 +5980,7 @@ GameObject:
   - component: {fileID: 1711470695}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6189,7 +6189,7 @@ GameObject:
   - component: {fileID: 1769412341}
   m_Layer: 5
   m_Name: GameEndText
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6426,7 +6426,7 @@ GameObject:
   - component: {fileID: 1851267089}
   m_Layer: 5
   m_Name: NextQuestionButton
-  m_TagString: PrimaryColor
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6557,7 +6557,7 @@ GameObject:
   - component: {fileID: 1869237345}
   m_Layer: 5
   m_Name: QuestionText
-  m_TagString: Untagged
+  m_TagString: SpecialText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6610,8 +6610,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291151301
-  m_fontColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    rgba: 4278190245
+  m_fontColor: {r: 0.64705884, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6942,7 +6942,7 @@ GameObject:
   - component: {fileID: 2010638690}
   m_Layer: 5
   m_Name: GameEndImage
-  m_TagString: PrimaryColor
+  m_TagString: SecondaryColor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7320,7 +7320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12941177, b: 0.16862746, a: 1}
+  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

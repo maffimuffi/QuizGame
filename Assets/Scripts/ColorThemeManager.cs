@@ -9,7 +9,6 @@ public class ColorThemeManager : MonoBehaviour
     // Containers for all objects with categories
     private List<Image> baseColorObjects = new List<Image>();
     private List<Image> secondaryColorObjects = new List<Image>();
-    private List<Image> buttonColorObjects = new List<Image>();
     private List<TMP_Text> textColorObjects = new List<TMP_Text>();
     public List<Theme> themes = new List<Theme>();
     public Theme currentTheme;
@@ -20,7 +19,7 @@ public class ColorThemeManager : MonoBehaviour
     void Awake()
     {
         FillColorLists();
-        Theme1();
+        AddThemes();
         currentTheme = themes[0];
         SetTheme();
     }
@@ -120,10 +119,6 @@ public class ColorThemeManager : MonoBehaviour
             {
                 secondaryColorObjects.Add(i);
             }
-            else if(i.CompareTag("ButtonColor"))
-            {
-                buttonColorObjects.Add(i);
-            }
         }
         foreach(TMP_Text t in canvas.GetComponentsInChildren<TMP_Text>())
         {
@@ -143,17 +138,32 @@ public class ColorThemeManager : MonoBehaviour
         }
         foreach (TMP_Text obj3 in textColorObjects)
         {
-            obj3.color = currentTheme.textColor;
+            if(themeIndex == 6)
+            {
+                if (obj3.tag == "SpecialText")
+                {
+                    obj3.color = currentTheme.baseColor;
+                }
+                else
+                {
+                    obj3.color = currentTheme.textColor;
+                }
+            }
+            else
+            {
+                obj3.color = currentTheme.textColor;
+            }
         }
     }
-    void Theme1()
+    void AddThemes()
     {
-        themes.Add(new Theme(new Color32(18, 10, 92, 255), new Color32(56, 90, 186, 255), new Color32(255, 255, 255, 255), "Ultramariini"));
-        themes.Add(new Theme(new Color32(0, 33, 43, 255),new Color32(0, 57, 75, 255),new Color32(255, 255, 255, 255), "Tummansininen"));
+        themes.Add(new Theme(new Color32(18, 10, 92, 255), new Color32(56, 85, 186, 255), new Color32(255, 255, 255, 255), "Ultramariini"));
+        themes.Add(new Theme(new Color32(5, 41, 51, 255),new Color32(6, 75, 96, 255),new Color32(255, 255, 255, 255), "Tummansininen"));
         themes.Add(new Theme(new Color32(0, 43, 33, 255),new Color32(0, 75, 57, 255), new Color32(255, 255, 255, 255), "Vihreä"));
-        themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(224, 182, 13, 255), new Color32(255, 255, 255, 255), "Keltainen"));
-        themes.Add(new Theme(new Color32(97, 37, 25, 255),new Color32(97, 61, 54, 255), new Color32(255, 255, 255, 255), "Punainen"));
-        themes.Add(new Theme(new Color32(92, 35, 97, 255),new Color32(212, 81, 224, 255), new Color32(255, 255, 255, 255), "Pinkki"));
+        themes.Add(new Theme(new Color32(97, 79, 6, 255),new Color32(173, 146, 15, 255), new Color32(255, 255, 255, 255), "Keltainen"));
+        themes.Add(new Theme(new Color32(135, 15, 39, 255),new Color32(164, 61, 54, 255), new Color32(255, 255, 255, 255), "Tuli"));
+        themes.Add(new Theme(new Color32(38, 8, 14, 255),new Color32(123, 35, 65, 255), new Color32(255, 255, 255, 255), "Pinkki"));
+        themes.Add(new Theme(new Color32(165, 0, 0, 255), new Color32(217, 217, 217, 255), new Color32(255, 255, 255, 255), "Joulu"));
     }
 }
 [System.Serializable]
