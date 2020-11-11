@@ -11,6 +11,7 @@ public class Question : MonoBehaviour
     public List<string> finalStringList = new List<string>();
     
     public List<QuestionList> questionList = new List<QuestionList>();
+    public List<QuestionList> tenQuestions = new List<QuestionList>();
     public TMP_Text QuestionText;
     public TMP_Text AnswerAText;
     public TMP_Text AnswerBText;
@@ -86,47 +87,58 @@ public class Question : MonoBehaviour
         RandomQuestion();
     }
     public void RandomQuestion()
-    {
-        int randomInt = 0;
-        finalStringList.Clear();
-        stringList.Clear();
-        if(questionList.Count ==0)
-        {
-            Debug.Log("No unused questions found, Clearing used QuestionsList");
-            UsedQuestions.Clear();
-            return;
-        }
-        randomInt =UnityEngine.Random.Range(0,questionList.Count);
-        
-        UsedQuestions.Add(questionList[randomInt].id);
-        foreach(string s in questionList[randomInt].optionsList)
-        {
-            if(s != "")
+    {   for(int j = 0;j<10;j++){
+            int randomInt = 0;
+            finalStringList.Clear();
+            stringList.Clear();
+            if(questionList.Count ==0)
             {
-                stringList.Add(s);
+                Debug.Log("No unused questions found, Clearing used QuestionsList");
+                UsedQuestions.Clear();
+                return;
             }
-           
-        }
-        finalStringList.Add(stringList[0]);
-        finalStringList.Add(stringList[1]);
-        for(int i = 0;i<3;i++)
-        {
-            int randomNumber = UnityEngine.Random.Range(2,stringList.Count);
-            finalStringList.Add(stringList[randomNumber]);
-            stringList.Remove(stringList[randomNumber]);
+            randomInt =UnityEngine.Random.Range(0,questionList.Count);
             
-           
+            UsedQuestions.Add(questionList[randomInt].id);
+            foreach(string s in questionList[randomInt].optionsList)
+            {
+                if(s != "")
+                {
+                   
+                    stringList.Add(s);
+                }
+            
+            }
+            finalStringList.Add(stringList[0]);
+            finalStringList.Add(stringList[1]);
+            for(int i = 0;i<3;i++)
+            {
+                int randomNumber = UnityEngine.Random.Range(2,stringList.Count);
+                finalStringList.Add(stringList[randomNumber]);
+                stringList.Remove(stringList[randomNumber]);
+                
+            
+            }
+            
+            List<string> templist = new List<string>();
+            foreach(string s in finalStringList)
+            {
+                templist.Add(s);
+            }
+            tenQuestions.Add(new QuestionList(templist,questionList[randomInt].id));
+            questionList.Remove(questionList[randomInt]);
         }
-        
         SetText();
     }
     public void SetText()
     {
-        QuestionText.text = finalStringList[0];
-        AnswerAText.text = finalStringList[1];
-        AnswerBText.text = finalStringList[2];
-        AnswerCText.text = finalStringList[3];
-        AnswerDText.text = finalStringList[4];
+        
+        QuestionText.text = tenQuestions[0].optionsList[0];
+        AnswerAText.text =  tenQuestions[0].optionsList[1];
+        AnswerBText.text =  tenQuestions[0].optionsList[2];
+        AnswerCText.text =  tenQuestions[0].optionsList[3];
+        AnswerDText.text =  tenQuestions[0].optionsList[4];
+        tenQuestions.RemoveAt(0);
         ShuffleButtons();
     }
     public void ShuffleButtons()
@@ -153,6 +165,12 @@ public class Question : MonoBehaviour
 [System.Serializable]
 public class QuestionList
 {
+    public QuestionList(){}
+    public QuestionList(List<string> list, int number)
+    {
+        optionsList = list;
+        id = number;
+    }
     public List<string> optionsList = new List<string>();
     public int id;
 }

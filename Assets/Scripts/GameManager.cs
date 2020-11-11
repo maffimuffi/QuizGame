@@ -144,7 +144,8 @@ public class GameManager : MonoBehaviour
             answering = true;
             timeLeft = 60f;
             gameState = 1;
-            databaseManager.FetchQuestion();
+            question.SetText();
+            //databaseManager.FetchQuestion();
             
         }
     }
