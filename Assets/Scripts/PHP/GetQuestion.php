@@ -1,4 +1,6 @@
 ﻿<?php
+     
+     header('Access-Control-Allow-Origin: *');
      header('Content-type: text/html; charset=ISO-8859-1');
      $hostname = 'mysql.metropolia.fi';
      $username = 'joonaaal';
