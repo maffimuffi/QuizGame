@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public GameObject infoScreen;
     public GameObject roundEndScreen;
     public GameObject gameEndScreen;
+    public GameObject timerObject;
     
 
     // Texts
@@ -72,12 +73,20 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CheckGameState();
         if (gameState != 0)
         {
             gameInfoText.text = "Pisteet: " + score + "        " + "Taso: " + level + "         " + "Kysymys: " + questionNumber + "/10";
+        }
+        if(gameState == 1)
+        {
+            timerObject.SetActive(true);
+        }
+        else if(gameState != 1)
+        {
+            timerObject.SetActive(false);
         }
     }
 
@@ -110,9 +119,6 @@ public class GameManager : MonoBehaviour
         
         question.Initialize();
     }
-
-    
-
 
     public void NewRound()
     {
@@ -268,7 +274,6 @@ public class GameManager : MonoBehaviour
         }
         if (gameState == 2)
         {
-            
             // Player answered a question
             if (playerAnswer == true)
             {
@@ -285,7 +290,6 @@ public class GameManager : MonoBehaviour
         if (gameState == 3)
         {
             // Level has ended
-            
             roundEndScreen.SetActive(true);
             // Player gets promoted to the next level!
             if (correctAnswers >= 8)

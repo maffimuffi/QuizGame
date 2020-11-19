@@ -1054,7 +1054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -124}
+  m_AnchoredPosition: {x: 0, y: -135}
   m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &244627258
@@ -1128,6 +1128,7 @@ MonoBehaviour:
   infoScreen: {fileID: 1406281453}
   roundEndScreen: {fileID: 1627640355}
   gameEndScreen: {fileID: 100905647}
+  timerObject: {fileID: 1946462649}
   gameInfoText: {fileID: 240810935}
   timerText: {fileID: 319433199}
   questionInfoText: {fileID: 505026851}
@@ -4273,14 +4274,14 @@ MonoBehaviour:
   - name: CorrectSFX
     clip: {fileID: 8300000, guid: 4e7d2ed2bd3ce174aa8495737ade87dc, type: 3}
     parameters:
-      Volume: 0.4
+      Volume: 0.2
       Pitch: 1
       Loop: 0
     Source: {fileID: 0}
   - name: IncorrectSFX
     clip: {fileID: 8300000, guid: b2cde81c1526d304786f03e9cedb4604, type: 3}
     parameters:
-      Volume: 0.4
+      Volume: 0.2
       Pitch: 1
       Loop: 0
     Source: {fileID: 0}
@@ -5942,7 +5943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.64705884, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.22352943, b: 0.29411766, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6363,7 +6364,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
