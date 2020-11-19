@@ -3807,6 +3807,7 @@ GameObject:
   - component: {fileID: 1075809208}
   - component: {fileID: 1075809207}
   - component: {fileID: 1075809206}
+  - component: {fileID: 1075809209}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: PrimaryColor
@@ -3889,6 +3890,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1075809209}
+        m_TargetAssemblyTypeName: MenuOpener, Assembly-CSharp
+        m_MethodName: OpenGameScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1075809207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3927,6 +3940,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075809204}
   m_CullTransparentMesh: 0
+--- !u!114 &1075809209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075809204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ebfa1332fd41a47a8ccfa7d812f469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameScreen: {fileID: 1566021160}
 --- !u!1 &1139960920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4401,14 +4427,14 @@ MonoBehaviour:
   - name: CorrectSFX
     clip: {fileID: 8300000, guid: 4e7d2ed2bd3ce174aa8495737ade87dc, type: 3}
     parameters:
-      Volume: 0.2
+      Volume: 0.05
       Pitch: 1
       Loop: 0
     Source: {fileID: 0}
   - name: IncorrectSFX
     clip: {fileID: 8300000, guid: b2cde81c1526d304786f03e9cedb4604, type: 3}
     parameters:
-      Volume: 0.2
+      Volume: 0.05
       Pitch: 1
       Loop: 0
     Source: {fileID: 0}
