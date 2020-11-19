@@ -80,14 +80,6 @@ public class GameManager : MonoBehaviour
         {
             gameInfoText.text = "Pisteet: " + score + "        " + "Taso: " + level + "         " + "Kysymys: " + questionNumber + "/10";
         }
-        if(gameState == 1)
-        {
-            timerObject.SetActive(true);
-        }
-        else if(gameState != 1)
-        {
-            timerObject.SetActive(false);
-        }
     }
 
     public void StartNewGame()
@@ -102,6 +94,7 @@ public class GameManager : MonoBehaviour
         infoScreen.SetActive(false);
         gameEndScreen.SetActive(false);
         roundEndScreen.SetActive(false);
+        timerObject.SetActive(true);
         level = 1;
         correctAnswers = 0;
         combinedCorrectAnswers = 0;
@@ -116,13 +109,13 @@ public class GameManager : MonoBehaviour
         gameState = 1;
         SavePlayer();
         databaseManager.FetchQuestion();
-        
         question.Initialize();
     }
 
     public void NewRound()
     {
         roundEndScreen.SetActive(false);
+        timerObject.SetActive(true);
         correctAnswers = 0;
         questionNumber = 1;
         roundScore = 0;
@@ -147,6 +140,7 @@ public class GameManager : MonoBehaviour
         {
             
             infoScreen.SetActive(false);
+            timerObject.SetActive(true);
             answering = true;
             timeLeft = 60f;
             gameState = 1;
@@ -186,8 +180,9 @@ public class GameManager : MonoBehaviour
         answering = false;
         correctAnswers++;
         combinedCorrectAnswers++;
+        timerObject.SetActive(false);
 
-        if(level == highestRound)
+        if (level == highestRound)
         {
             score += 1 * level;
         }
@@ -206,6 +201,7 @@ public class GameManager : MonoBehaviour
         answering = false;
         playerAnswer = false;
         wrongAnswers++;
+        timerObject.SetActive(false);
 
         if (settingsMenu.soundOn)
         {
