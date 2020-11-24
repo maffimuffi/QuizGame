@@ -899,8 +899,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentQuestion: {fileID: 244627260}
-  SQLsearch: Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
-    FROM kysymykset
+  SQLsearch: 'Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10
+    FROM kysymykset Where vaikeusaste = '
+  difficulty: 1
 --- !u!114 &244627260
 MonoBehaviour:
   m_ObjectHideFlags: 0

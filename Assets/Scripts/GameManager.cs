@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 1;
         continuedToNextRound = false;
+        databaseManager.difficulty =level.ToString();
         databaseManager.FetchQuestion();
         colorThemeManager.SetTheme();
     }

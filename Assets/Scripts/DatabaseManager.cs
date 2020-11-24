@@ -7,8 +7,8 @@ public class DatabaseManager : MonoBehaviour
 {
     public Question currentQuestion;
     [TextArea(1,5)]
-    public string SQLsearch = "Select kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4 FROM kysymykset Where aihepiiri = 'PO'";
-
+    public string SQLsearch = "Select id,kysymys,vaihtoehto1,vaihtoehto2,vaihtoehto3,vaihtoehto4,vaihtoehto5,vaihtoehto6,vaihtoehto7,vaihtoehto8,vaihtoehto9,vaihtoehto10 FROM kysymykset Where vaikeusaste = ";
+    public string difficulty ="1";
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +22,11 @@ public class DatabaseManager : MonoBehaviour
     }
     IEnumerator GetQuestion()
     {  
-        
+        string tempString = "";
+        tempString = SQLsearch+difficulty; 
+        Debug.Log(tempString);
        WWWForm form = new WWWForm();
-       form.AddField("var1", SQLsearch);
+       form.AddField("var1", tempString);
         
        
         using (UnityWebRequest www = UnityWebRequest.Post("http://users.metropolia.fi/~niklaslm/Tietokilpa/GetQuestion.php", form))

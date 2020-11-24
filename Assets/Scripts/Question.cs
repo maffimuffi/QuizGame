@@ -23,6 +23,7 @@ public class Question : MonoBehaviour
     public Button AnswerDButton;
     public List <Button> AnswerButtons = new List<Button>();
     public List<int> UsedQuestions = new List<int>();
+    private string parseText;
     
     public void Initialize()
     {
@@ -34,6 +35,7 @@ public class Question : MonoBehaviour
     }
     public void Parse(string text)
     {
+        parseText = text;
         stringList.Clear();
         questionList.Clear();
         string tempString = "";
@@ -95,6 +97,7 @@ public class Question : MonoBehaviour
             stringList.Clear();
             if(questionList.Count ==0)
             {
+                
                 Debug.Log("No unused questions found, Clearing used QuestionsList");
                 UsedQuestions.Clear();
                 GetComponent<DatabaseManager>().FetchQuestion();
