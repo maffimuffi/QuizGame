@@ -24,7 +24,7 @@ public class Question : MonoBehaviour
     public List <Button> AnswerButtons = new List<Button>();
     public List<int> UsedQuestions = new List<int>();
     private string parseText;
-    
+    // alustetaan muuttujia
     public void Initialize()
     {
         Debug.Log("Initialized Question");
@@ -33,6 +33,7 @@ public class Question : MonoBehaviour
         AnswerCText = AnswerCButton.GetComponentInChildren<TMP_Text>();
         AnswerDText = AnswerDButton.GetComponentInChildren<TMP_Text>();
     }
+    // käydään läpi teksti joka saadaan GetQuestionistä
     public void Parse(string text)
     {
         parseText = text;
@@ -40,7 +41,7 @@ public class Question : MonoBehaviour
         questionList.Clear();
         string tempString = "";
         QuestionList list = new QuestionList();
-        
+        // käydään yksitellen läpi joka kirjain
         foreach(char c in text )
         {
             if(c==';')
