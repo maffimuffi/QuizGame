@@ -6,7 +6,7 @@ using TMPro;
 
 public class ColorThemeManager : MonoBehaviour
 {
-    // Lists for all objects with categories
+    // Containers for all objects with categories
     private List<Image> baseColorObjects = new List<Image>();
     private List<Image> secondaryColorObjects = new List<Image>();
     private List<TMP_Text> textColorObjects = new List<TMP_Text>();
@@ -16,7 +16,6 @@ public class ColorThemeManager : MonoBehaviour
 
     public int themeIndex = 0;
 
-    // Tapahtuu pelin alkaessa. Etsii aluksi kaikki komponentit minkä väriä täytyy vaihtaa, lisää teemat mitkä halutaan ja asettaa ensimmäisen teeman aktiiviseksi listalla.
     void Awake()
     {
         FillColorLists();
@@ -27,7 +26,7 @@ public class ColorThemeManager : MonoBehaviour
 
     void Update()
     {
-        // Painamalla E teema vaihtuu seuraavaan listalla, minne teemat on tallennettu
+
         if(Input.GetKeyDown(KeyCode.E))
         {
             if(themeIndex == (themes.Count - 1))
@@ -43,7 +42,6 @@ public class ColorThemeManager : MonoBehaviour
                 SetTheme();
             }
         }
-        // Painamalla Q teema vaihtuu edelliseen listalla, minne teemat on tallennettu
         if(Input.GetKeyDown(KeyCode.Q))
         {
             if (themeIndex == 0)
@@ -59,8 +57,56 @@ public class ColorThemeManager : MonoBehaviour
                 SetTheme();
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            themeIndex = 0;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            themeIndex = 1;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+            
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            themeIndex = 2;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+            
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            themeIndex = 3;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+            
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            themeIndex = 4;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            themeIndex = 5;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            themeIndex = 6;
+            currentTheme = themes[themeIndex];
+            SetTheme();
+
+        }
     }
-    // Etsii kaikki komponentit, minkä väriä teemat vaihtavat, ja tietyillä tageilla värit vaihdetaan oikeiksi. Tagit on liitetty jokaiseen objektiin skenessä, mitä halutaan muuttaa.
     public void FillColorLists()
     {
         foreach(Image i in canvas.GetComponentsInChildren<Image>())
@@ -79,10 +125,9 @@ public class ColorThemeManager : MonoBehaviour
            textColorObjects.Add(t);
         }
     }
-    // Vaihtaa teeman mukaan pelin komponenttien värejä oikeiksi.
     public void SetTheme()
     {
-
+        
         foreach(Image obj1 in baseColorObjects)
         {
             obj1.color = currentTheme.baseColor;
@@ -110,7 +155,6 @@ public class ColorThemeManager : MonoBehaviour
             }
         }
     }
-    // Tänne pystyy lisäämään eri väriteemoja listaan niin paljon kuin haluaa. Täytyy siis antaa 3 värikoodia RGB muodossa(1.Perusväri,2.Toinen muut objektit,3.tekstit) ja nimi.
     void AddThemes()
     {
         themes.Add(new Theme(new Color32(18, 10, 92, 255), new Color32(56, 85, 186, 255), new Color32(255, 255, 255, 255), "Ultramariini"));
@@ -122,7 +166,6 @@ public class ColorThemeManager : MonoBehaviour
         themes.Add(new Theme(new Color32(165, 0, 0, 255), new Color32(217, 217, 217, 255), new Color32(255, 255, 255, 255), "Joulu"));
     }
 }
-// Luokka, millä saadaan luotua teemat.
 [System.Serializable]
 public class Theme
 {

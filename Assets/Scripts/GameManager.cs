@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         databaseManager = GetComponent<DatabaseManager>();
         question = GetComponent<Question>();
         colorThemeManager = GetComponent<ColorThemeManager>();
-        //colorThemeManager.SetTheme();
+        colorThemeManager.SetTheme();
         mainMenu.settingsScreen.SetActive(false);
         mainMenu.gameScreen.SetActive(false);
         settingsMenu.musicOn = true;
@@ -76,13 +76,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckGameState();
-        // Päivittää pelin ylälaidassa olevia piste-, taso-, ja kysymystekstejä eli pisteiden määrää, tasonumeroa ja sen hetkisen kysymyksen numneroa.
         if (gameState != 0)
         {
             gameInfoText.text = "Pisteet: " + score + "        " + "Taso: " + level + "         " + "Kysymys: " + questionNumber + "/10";
         }
     }
-    // Metodi millä uusi peli käynnistetään päävalikosta. Asettaa kaikki seurattavat arvot nollille eli aloittaa pelin täysin puhtaalta pöydältä.
+
     public void StartNewGame()
     {
         mainMenu.mainmenuScreen.SetActive(false);
@@ -90,8 +89,8 @@ public class GameManager : MonoBehaviour
         infoScreen.SetActive(true);
         gameEndScreen.SetActive(true);
         roundEndScreen.SetActive(true);
-        //colorThemeManager.FillColorLists();
-        //colorThemeManager.SetTheme();
+        colorThemeManager.FillColorLists();
+        colorThemeManager.SetTheme();
         infoScreen.SetActive(false);
         gameEndScreen.SetActive(false);
         roundEndScreen.SetActive(false);
@@ -112,7 +111,7 @@ public class GameManager : MonoBehaviour
         databaseManager.FetchQuestion();
         question.Initialize();
     }
-    // Metodi millä aloitetaan uusi kierros kun 10 kysymystä on käyty ja halutaan jatkaa eteenpäin.
+
     public void NewRound()
     {
         roundEndScreen.SetActive(false);
@@ -124,11 +123,11 @@ public class GameManager : MonoBehaviour
         answering = true;
         gameState = 1;
         continuedToNextRound = false;
-        databaseManager.difficulty = level.ToString();
+        databaseManager.difficulty =level.ToString();
         databaseManager.FetchQuestion();
-        //colorThemeManager.SetTheme();
+        colorThemeManager.SetTheme();
     }
-    // Metodi millä siirrytään seuraavaan kysymykseen ellei 10 kysymystä ole jo käyty, koska sillon peli siirtyy seuraavaan tilaan, koska taso on päättynyt.
+
     public void NextQuestion()
     {
         questionNumber++;
@@ -151,13 +150,14 @@ public class GameManager : MonoBehaviour
             
         }
     }
-    // Metodi mikä kutsutaan sen jälkeen, kun kierros päättynyt ja halutaan seuraavalle tasolle. Tällä tavalla saadaan siis tason päättymisruutu pidetty näkyvillä ja sitten tätä kutsuttaessa vasta mennään eteenpäin
+
     public void ContinueToNextRound()
     {
+        
         continuedToNextRound = true;
         roundEndScreen.SetActive(false);
     }
-    // Metodi millä päästään kysymysten ja kierroksien välissä takaisin päävalikkoon, jos ei haluta jatkaa pelaamista. Lopettaessa metodi tallentaa etenemisen pelissä.
+
     public void ExitToMenu()
     {
         infoScreen.SetActive(false);
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         SavePlayer();
         gameState = 0;
     }
-    // Metodia kutsutaan, kun pelin kaikki 10 tasoa on läpäisty ja pelistä poistutaan takaisin päävalikkoon.
+
     public void EndGame()
     {
         gameEndScreen.SetActive(false);
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
         mainMenu.mainmenuScreen.SetActive(true);
         gameState = 0;
     }
-    // Metodi, mikä on kiinni oikean vastauksen napissa. Saadaan tieto, että kysymys on mennyt oikein, ja annetaan pelaajalle pisteitä.
+
     public void CorrectAnswer()
     {
         answering = false;
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
             AudioManager.Instance.PlaySound("CorrectSFX");
         }
     }
-    // Metodi, mikä on kiinni väärien vastauksien napeissa. Saadaan tieto, että kysymys on mennyt väärin.
+
     public void WrongAnswer()
     {
         answering = false;
@@ -210,12 +210,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Metodi, millä pelin eteneminen tallennetaan.
+    // Methods for saving and loading the game
     public void SavePlayer()
     {
         SaveSystem.SaveGame(this);
     }
-    // Metodi, millä ladataan aikaisempi eteneminen pelissä ja jatketaan sitä.
+
     public void LoadPlayer()
     {
         infoScreen.SetActive(false);
@@ -241,15 +241,14 @@ public class GameManager : MonoBehaviour
         question.tenQuestions = data.questionList;
     }
 
-    // Tarkistaa, missä tilassa peli on
+    // Checks what state the game is currently in
     void CheckGameState()
     {
-        // gameState 1 on tilanne, missä pelaaja on vastaamassa kysymykseen ja aika kuluu. Sitten kun kysymykseen vastataan jotakin, peli siirtyy tilaan 2.
         if (gameState == 1)
         {
+            // Player is answering a question
             if (answering)
             {
-                // Tämä on vain testaukseen tarkoitettu helpotus millä saa aina oikean vastauksen välilyöntiä painamalla, kannattaa poistaa ennen pelin julkaisua.
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
                     CorrectAnswer();
@@ -257,12 +256,12 @@ public class GameManager : MonoBehaviour
                 timeLeft -= Time.deltaTime;
                 timerText.text = timeLeft.ToString("0");
             }
-            // Tarkistetaan, jos pelaaja on vastannut niin siirrytään tilaan 2.
+            // Must check if the player has answered
             if (!answering)
             {
                 gameState = 2;
             }
-            // Tarkistaa, jos aika menee 0, niin pelaajalle annetaan väärä vastaus
+            // If timer goes down to 0, player failed
             if (timeLeft <= 0 && answering)
             {
                 timeLeft = 0f;
@@ -270,28 +269,26 @@ public class GameManager : MonoBehaviour
                 gameState = 2;
             }
         }
-        // Tila missä ollaan sillon kun pelaaja on vastannut kysymykseen eikä olla siirrytty seuraavaan kysymykseen.
         if (gameState == 2)
         {
-            // Jos vastaus on oikea, ruudulle tulee teksti, että meni oikein. Tässä voisi olla se mahdollisuus saada kysymykseen tarkentava lisätieto teksti näkyviin tuon "Oikein" tilalle.
+            // Player answered a question
             if (playerAnswer == true)
             {
                 infoScreen.SetActive(true);
                 questionInfoText.text = "Oikein!";
 
             }
-            // Jos vastaus on väärin, ruudulle tulee siitä teksti, että väärin meni.
             else if (playerAnswer == false)
             {
                 infoScreen.SetActive(true);
                 questionInfoText.text = "Väärin!";
             }
         }
-        // Tila 3 on tilanne, minne peli siirtyy jos kaikkiin tason 10 kysymykseen on vastattu. Tarkistetaan paljonko pelaaja on vastannut oikein, ja edetään sen mukaan.
         if (gameState == 3)
         {
+            // Level has ended
             roundEndScreen.SetActive(true);
-            // Tänne mennään, jos pelaaja pääsee seuraavalle tasolle. Tarkistaa myös oliko kierros jo viimeinen, ja jos oli niin peli siirtyy tilaan 4.
+            // Player gets promoted to the next level!
             if (correctAnswers >= 8)
             {
                 if(level < 10)
@@ -318,7 +315,7 @@ public class GameManager : MonoBehaviour
                     gameState = 4;
                 }
             }
-            // Tänne mennään, jos pelaaja pysyy samalla tasolla eikä saanut tarpeeksi oikein, että nousisi tai liian vähän oikein, että tippuisi tasolta.
+            // Player stays in the current level
             else if (correctAnswers > 4 && correctAnswers < 8)
             {
                 roundEndText.text = "Sait alle 8/10 oikein. Pysyt samalla tasolla.";
@@ -329,7 +326,7 @@ public class GameManager : MonoBehaviour
                     NewRound();
                 }
             }
-            // Tänne mennään, jos pelaaja on vastannut liian vähän oikein, että pelaaja tiputetaan alemmalle tasolle, jos sen hetkinen taso ei ole 1.
+            // Player gets demoted to the lower level
             else if (correctAnswers <= 4)
             {
                 if (level > 1)
@@ -353,9 +350,11 @@ public class GameManager : MonoBehaviour
                 }              
             }
         }
-        // Tila minne mennään pelin päätyttyä. Avataan lopetus ruutu, missä näytetään paljonko on yhteensä saanut kysymyksiä oikein ja väärin ja myös yhteispisteet
+
         if (gameState == 4)
         {
+            
+            // Game has ended, open game ending screen
             roundEndScreen.SetActive(false);
             gameEndScreen.SetActive(true);
 

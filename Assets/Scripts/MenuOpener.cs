@@ -6,7 +6,7 @@ public class MenuOpener : MonoBehaviour
 {
     public GameObject gameScreen;
 
-    // Animaatio pelin ruutujen vaihtamiselle
+
     public void OpenGameScreen()
     {
         if(gameScreen != null)

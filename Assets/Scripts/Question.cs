@@ -42,7 +42,7 @@ public class Question : MonoBehaviour
         questionList.Clear();
         string tempString = "";
         QuestionList list = new QuestionList();
-        
+        // käydään yksitellen läpi joka kirjain
         foreach(char c in text )
         {
             if(c==';')

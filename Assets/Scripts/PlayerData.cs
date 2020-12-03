@@ -26,7 +26,6 @@ public class PlayerData
     
     public List<QuestionList> questionList = new List<QuestionList>();
 
-    // Liittyy pelin tallentamiseen. Tällä otetaan talteen kaikki tarvittavat tiedot mitkä pitää tallentaa, että pelin jatkaminen onnistuu.
     public PlayerData(GameManager manager)
     {
         level = manager.level;

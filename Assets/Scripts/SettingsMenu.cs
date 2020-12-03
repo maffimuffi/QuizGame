@@ -34,50 +34,50 @@ public class SettingsMenu : MonoBehaviour
 
     void Update()
     {
-        // Vaihtaa asetus-valikossa olevaa teeman nimen kohtaa
-        themeText.text = colorManager.currentTheme.themeName;      
+        themeText.text = colorManager.currentTheme.themeName;
+        
     }
-    // Metodi musiikki-nappulalle.
+
     public void MusicButton()
     {
-        // Musiikki on päällä ja nappia painetaan, musiikki laitetaan pois päältä ja kuva vaihtuu.
         if(musicOn)
         {
             musicOn = false;
             AudioManager.Instance.StopSound("GameMusic");
             musicButton.image.sprite = musicOffImage;
+            //musicButton.image.color = Color.red;
         }
-        // Musiikki ei ole päällä ja nappia painetaan niin musiikki laitetaan takaisin päälle ja kuva vaihtuu.
         else if(!musicOn)
         {
             musicOn = true;
             AudioManager.Instance.PlaySound("GameMusic");
             musicButton.image.sprite = musicOnImage;
+            //musicButton.image.color = Color.green;
         }
     }
-    // Metodi ääni-nappulalle.
+
     public void SoundButton()
     {
-        // Äänet ovat päällä ja nappia painetaan, äänet laitetaan pois päältä ja kuva vaihtuu.
-        if (soundOn)
+        if(soundOn)
         {
             soundOn = false;
             soundButton.image.sprite = soundOffImage;
+            //soundButton.image.color = Color.red;
         }
-        // Äänet eivät ole päällä ja nappia painetaan niin äänet laitetaan takaisin päälle ja kuva vaihtuu.
-        else if (!soundOn)
+        else if(!soundOn)
         {
             soundOn = true;
             soundButton.image.sprite = soundOnImage;
+            //soundButton.image.color = Color.green;
         }
     }
-    // Metodi, millä päästään asetukset valikosta takaisin päävalikkoon.
+
     public void BackButton()
     {
         settingsScreen.SetActive(false);
         mainmenuScreen.SetActive(true);
     }
-    // Metodi millä saadaan vaihdettua seuraavaan teemaan listalla oikealle osoittavalla nuolella.
+
     public void NextTheme()
     {
         if(colorManager.themeIndex == (colorManager.themes.Count - 1))
@@ -93,7 +93,7 @@ public class SettingsMenu : MonoBehaviour
             colorManager.SetTheme();
         }
     }
-    // Metodi, millä saadaan vaihdettua edelliseen teemaan listalla taaksepäin vasemmalle osoittavalla nuolella.
+
     public void PreviousTheme()
     {
         if (colorManager.themeIndex == 0)
