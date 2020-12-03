@@ -24,7 +24,8 @@ public class Question : MonoBehaviour
     public List <Button> AnswerButtons = new List<Button>();
     public List<int> UsedQuestions = new List<int>();
     private string parseText;
-    // alustetaan muuttujia
+    
+    // Etsii itselleen nappien teksti-komponentit, että niitä voidaan muokata.
     public void Initialize()
     {
         Debug.Log("Initialized Question");
@@ -33,7 +34,7 @@ public class Question : MonoBehaviour
         AnswerCText = AnswerCButton.GetComponentInChildren<TMP_Text>();
         AnswerDText = AnswerDButton.GetComponentInChildren<TMP_Text>();
     }
-    // käydään läpi teksti joka saadaan GetQuestionistä
+    // Muokkaa haettua tekstiä oikeanlaiseksi ja lisää kysymykset ja vastaukset listoihin.
     public void Parse(string text)
     {
         parseText = text;
@@ -89,6 +90,7 @@ public class Question : MonoBehaviour
         
         RandomQuestion();
     }
+    // Ottaa haetuista kysymyksistä satunnaisen kysymyksen tai hakee uusia.
     public void RandomQuestion()
     {   
         tenQuestions.Clear();
@@ -96,7 +98,7 @@ public class Question : MonoBehaviour
             int randomInt = 0;
             finalStringList.Clear();
             stringList.Clear();
-            if(questionList.Count ==0)
+            if(questionList.Count == 0)
             {
                 
                 Debug.Log("No unused questions found, Clearing used QuestionsList");
@@ -105,7 +107,7 @@ public class Question : MonoBehaviour
                 return;
                 
             }
-            randomInt =UnityEngine.Random.Range(0,questionList.Count);
+            randomInt = UnityEngine.Random.Range(0,questionList.Count);
             
             UsedQuestions.Add(questionList[randomInt].id);
             foreach(string s in questionList[randomInt].optionsList)
@@ -138,6 +140,7 @@ public class Question : MonoBehaviour
         }
         SetText();
     }
+    // Asettaa vastausvaihtoehtoihin ja kysymyslaatikkoon oikeat tekstit
     public void SetText()
     {
         if(tenQuestions[0]== null)
@@ -158,6 +161,7 @@ public class Question : MonoBehaviour
         
         ShuffleButtons();
     }
+    // Vaihtaa nappuloiden paikkoja, että oikea vastaus ei ole aina samassa paikassa.
     public void ShuffleButtons()
     {
         
