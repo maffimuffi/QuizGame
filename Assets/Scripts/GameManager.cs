@@ -296,7 +296,7 @@ public class GameManager : MonoBehaviour
             {
                 if(level < 10)
                 {
-                    roundEndText.text = "Pääset Uudelle Tasolle!";
+                    roundEndText.text = "Onnittelut, nouset seuraavalle tasolle!";
                     if (continuedToNextRound)
                     {
                         score -= 1 * repeatRound * level;
@@ -321,7 +321,7 @@ public class GameManager : MonoBehaviour
             // Tänne mennään, jos pelaaja pysyy samalla tasolla eikä saanut tarpeeksi oikein, että nousisi tai liian vähän oikein, että tippuisi tasolta.
             else if (correctAnswers > 4 && correctAnswers < 8)
             {
-                roundEndText.text = "Pysyt Samalla Tasolla!";
+                roundEndText.text = "Sait alle 8/10 oikein. Pysyt samalla tasolla.";
                 if (continuedToNextRound)
                 {
                     repeatRound++;
@@ -334,7 +334,7 @@ public class GameManager : MonoBehaviour
             {
                 if (level > 1)
                 {
-                    roundEndText.text = "Tiput Alemmalle Tasolle!";
+                    roundEndText.text = "Sorry, liian monta väärää vastausta. Putoat alemmalle tasolle.";
                     if (continuedToNextRound)
                     {
                         score -= roundScore;
@@ -345,7 +345,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if(level == 1)
                 {
-                    roundEndText.text = "Yritä Uudelleen!";
+                    roundEndText.text = "Sorry, liian monta väärää vastausta. Pysyt tasolla 1.";
                     if (continuedToNextRound)
                     {
                         NewRound();
@@ -359,7 +359,7 @@ public class GameManager : MonoBehaviour
             roundEndScreen.SetActive(false);
             gameEndScreen.SetActive(true);
 
-            gameEndText.text = "Peli On Päättynyt!\n\n" + "Oikeat Vastaukset: " + combinedCorrectAnswers + "\n\n" + "Väärät Vastaukset: " + wrongAnswers + "\n\n" + "Pisteet: " + score;
+            gameEndText.text = "Onnittelut, pääsit loppuun asti!\n\n" + "Oikeat Vastaukset: " + combinedCorrectAnswers + "\n\n" + "Väärät Vastaukset: " + wrongAnswers + "\n\n" + "Pisteet: " + score + "/550";
 
             if (score > highscore)
             {
