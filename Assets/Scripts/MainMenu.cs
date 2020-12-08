@@ -12,12 +12,14 @@ public class MainMenu : MonoBehaviour
     public GameObject mainmenuScreen;
     public GameObject gameScreen;
     public GameObject settingsScreen;
+    public GameObject helpScreen;
 
     void Awake()
     {
         mainmenuScreen.SetActive(true);
         gameScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        helpScreen.SetActive(false);
     }
 
     public void StartNewButton()
@@ -36,6 +38,16 @@ public class MainMenu : MonoBehaviour
     {
         mainmenuScreen.SetActive(false);
         settingsScreen.SetActive(true);
+    }
+
+    public void HelpButton()
+    {
+        helpScreen.SetActive(true);
+    }
+
+    public void CloseHelp()
+    {
+        helpScreen.SetActive(false);
     }
 
     public void CloseGameButton()
