@@ -6444,7 +6444,7 @@ MonoBehaviour:
   mainmenuScreen: {fileID: 1566021160}
   gameScreen: {fileID: 2056686061}
   settingsScreen: {fileID: 705419513}
-  helpScreen: {fileID: 0}
+  helpScreen: {fileID: 1290450184}
 --- !u!95 &1566021163
 Animator:
   serializedVersion: 3
