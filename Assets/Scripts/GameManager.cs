@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         CheckGameState();
         if (gameState != 0)
         {
-            gameInfoText.text = "Pisteet: " + score + "        " + "Taso: " + level + "         " + "Kysymys: " + questionNumber + "/10";
+            gameInfoText.text = "P: " + score + "      " + "TP: " + roundScore + "      " + "T: " + level + "       " + "K: " + questionNumber + "/10";
         }
     }
 
