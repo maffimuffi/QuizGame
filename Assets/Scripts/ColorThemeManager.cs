@@ -57,55 +57,6 @@ public class ColorThemeManager : MonoBehaviour
                 SetTheme();
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            themeIndex = 0;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            themeIndex = 1;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-            
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            themeIndex = 2;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-            
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            themeIndex = 3;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-            
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            themeIndex = 4;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-            
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            themeIndex = 5;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            themeIndex = 6;
-            currentTheme = themes[themeIndex];
-            SetTheme();
-
-        }
     }
     public void FillColorLists()
     {
