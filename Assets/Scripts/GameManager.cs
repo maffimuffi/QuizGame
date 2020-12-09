@@ -76,10 +76,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckGameState();
-        // Päivittää pelin ylälaidassa olevia piste-, taso-, ja kysymystekstejä eli pisteiden määrää, tasonumeroa ja sen hetkisen kysymyksen numneroa.
-        if (gameState != 0)
+        if (gameState != 0 && colorThemeManager.canvas.name == "CanvasMobile")
         {
-            gameInfoText.text = "P: " + score + "      " + "TP: " + roundScore + "/" + (level * 10) + "      " + "T: " + level + "       " + "K: " + questionNumber + "/10";
+            gameInfoText.text = "P: " + score + "    " + "TP: " + roundScore + "/" + (level * 10) + "    " + "T: " + level + "    " + "K: " + questionNumber + "/10";
+        }
+        else if(gameState != 0 && colorThemeManager.canvas.name == "CanvasWeb")
+        {
+            gameInfoText.text = "Pisteet: " + score + "    " + "Tasopisteet: " + roundScore + "/" + (level * 10) + "    " + "Taso: " + level + "     " + "Kysymys: " + questionNumber + "/10";
         }
     }
     // Metodi millä uusi peli käynnistetään päävalikosta. Asettaa kaikki seurattavat arvot nollille eli aloittaa pelin täysin puhtaalta pöydältä.
