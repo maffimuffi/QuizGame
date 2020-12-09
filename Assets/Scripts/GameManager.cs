@@ -234,6 +234,7 @@ public class GameManager : MonoBehaviour
         infoScreen.SetActive(false);
         gameEndScreen.SetActive(false);
         roundEndScreen.SetActive(false);
+        question.Initialize();
         PlayerData data = SaveSystem.LoadGame();
 
         level = data.level;
