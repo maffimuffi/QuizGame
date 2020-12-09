@@ -12,12 +12,14 @@ public class MainMenu : MonoBehaviour
     public GameObject mainmenuScreen;
     public GameObject gameScreen;
     public GameObject settingsScreen;
+    public GameObject helpScreen;
 
     void Awake()
     {
         mainmenuScreen.SetActive(true);
         gameScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        helpScreen.SetActive(false);
     }
     // Metodi päävalikon Uusi peli-napin toiminnalle millä aloitetaan uusi peli.
     public void StartNewButton()
@@ -37,7 +39,17 @@ public class MainMenu : MonoBehaviour
         mainmenuScreen.SetActive(false);
         settingsScreen.SetActive(true);
     }
-    // Metodi päävalikon Poistu-napin toiminnalle, millä pelin saa suljettua(pääasiassa mobiililla). 
+
+    public void HelpButton()
+    {
+        helpScreen.SetActive(true);
+    }
+
+    public void CloseHelp()
+    {
+        helpScreen.SetActive(false);
+    }
+
     public void CloseGameButton()
     {
         Application.Quit();
