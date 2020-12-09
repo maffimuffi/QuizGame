@@ -16,6 +16,7 @@ public class DatabaseManager : MonoBehaviour
         //StartCoroutine(GetQuestion());
         
     }
+    // FetchQuestion() aloittaa prosessin GetQuestion(), joka hakee tietokannasta php-tiedostoa käyttäen. Post() sisään tulee osoite mistä tämä tiedosto löytyy.
     public void FetchQuestion()
     {
         StartCoroutine(GetQuestion());
