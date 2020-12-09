@@ -39,17 +39,17 @@ public class MainMenu : MonoBehaviour
         mainmenuScreen.SetActive(false);
         settingsScreen.SetActive(true);
     }
-
+    // Ohje-napin metodi.
     public void HelpButton()
     {
         helpScreen.SetActive(true);
     }
-
+    // Ohje-ikkunan sulkeminen.
     public void CloseHelp()
     {
         helpScreen.SetActive(false);
     }
-
+    // Pelin sulkemiseen tarkoitettu metodi mobiilille.
     public void CloseGameButton()
     {
         Application.Quit();
